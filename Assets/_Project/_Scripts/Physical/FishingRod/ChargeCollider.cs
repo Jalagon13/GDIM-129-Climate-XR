@@ -8,6 +8,7 @@ namespace MagnetFishing
     {
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log($"Collider Entering: {other.gameObject.name}");
             if (!other.CompareTag("RodTip")) return;
 
             Debug.Log("Power Charging...");
@@ -16,6 +17,7 @@ namespace MagnetFishing
 
         private void OnTriggerExit(Collider other)
         {
+            Debug.Log($"Collider Exiting: {other.gameObject.name}");
             if (!other.CompareTag("RodTip")) return;
 
             Debug.Log("Power Released!");
