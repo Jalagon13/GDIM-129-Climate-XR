@@ -32,15 +32,25 @@ public class GachaSystem : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, gachaPool.Count);
         GachaItem selectedItem = gachaPool[randomIndex];
 
-        UnityEngine.Debug.Log("Get:  " + selectedItem.itemName);
-
-        // -1
-        selectedItem.count--;
-
-        // remove the item if count=0
-        if (selectedItem.count <= 0)
+        // Fishing
+        if (Fishing())
         {
-            gachaPool.RemoveAt(randomIndex);
+            UnityEngine.Debug.Log("Get: " + selectedItem.itemName);
+            selectedItem.count--;
+            if (selectedItem.count <= 0)
+            {
+                gachaPool.RemoveAt(randomIndex);
+            }
         }
+        else
+        {
+            UnityEngine.Debug.Log("Oops!");
+        }
+    }
+
+    private bool Fishing()
+    {
+        // random for now
+        return UnityEngine.Random.value > 0.5f;
     }
 }
