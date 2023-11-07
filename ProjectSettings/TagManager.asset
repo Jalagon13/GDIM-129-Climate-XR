@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Anchor
   - RodTip
+  - TrashIcon
+  - GreenBar
   layers:
   - Default
   - TransparentFX
