@@ -18,14 +18,11 @@ namespace MagnetFishing
         {
             _startingPos = transform.position;
             _startingRot = transform.rotation;
-        }
 
-        private void OnEnable()
-        {
             GameSignals.POWER_RELEASED.AddListener(ThrowHook);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             GameSignals.POWER_RELEASED.RemoveListener(ThrowHook);
         }
@@ -47,19 +44,18 @@ namespace MagnetFishing
         // called when front trigger is pressed
         public void Activate(ActivateEventArgs args)
         {
-            Debug.Log("Activated");
+            GameSignals.ROD_ACTIVATED.Dispatch();
         }
 
         // called when front trigger is released
         public void DeActivate(DeactivateEventArgs args)
         {
-            Debug.Log("De-Activate");
+            GameSignals.ROD_DEACTIVATED.Dispatch();
         }
 
         // called when rod is selected
         public void FirstSelectEnter(SelectEnterEventArgs args)
         {
-            
             Debug.Log("Selecting Rod with");
         }
 

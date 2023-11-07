@@ -6,6 +6,7 @@ namespace MagnetFishing
 {
     public class Hook : MonoBehaviour
     {
+        [SerializeField] private float _secTillFishCaught; // temp delete later prolly. for debug for now.
         [SerializeField] private VectorVariable _rodTipPos;
         [SerializeField] private LineRenderer _hookLine;
 
@@ -18,6 +19,13 @@ namespace MagnetFishing
             _lr = Instantiate(_hookLine);
         }
 
+        private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(_secTillFishCaught);
+
+            StartMiniGame();
+        }
+
         private void OnDestroy()
         {
             Destroy(_lr.gameObject);
@@ -27,6 +35,16 @@ namespace MagnetFishing
         {
             _lr.SetPosition(0, _rodTipPos.Value);
             _lr.SetPosition(1, transform.position);
+        }
+
+        public void StartMiniGame()
+        {
+
+        }
+
+        public void StopMiniGame()
+        {
+
         }
 
         public void InitializeHook(Transform rodTipTransform)
