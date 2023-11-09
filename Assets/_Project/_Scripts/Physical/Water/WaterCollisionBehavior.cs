@@ -8,7 +8,7 @@ namespace MagnetFishing
     {
         private void OnTriggerEnter(Collider thingEntering)
         {
-            if (thingEntering.gameObject.CompareTag("bobber"))
+            if (thingEntering.gameObject.CompareTag("Bobber"))
             {
                 Rigidbody thingRigidbody = thingEntering.GetComponent<Rigidbody>();
                 thingRigidbody.velocity = new Vector3(0, 0, 0);
