@@ -6,16 +6,21 @@ namespace MagnetFishing
 {
     public class WaterCollisionBehavior : MonoBehaviour
     {
-        private void OnTriggerEnter(Collider thingEntering)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (thingEntering.gameObject.CompareTag("Bobber"))
+            if (collision.gameObject.CompareTag("Bobber"))
             {
-                Rigidbody thingRigidbody = thingEntering.GetComponent<Rigidbody>();
+                Rigidbody thingRigidbody = collision.gameObject.transform.GetComponent<Rigidbody>();
                 thingRigidbody.velocity = new Vector3(0, 0, 0);
                 Debug.Log("Bobber stopped in its tracks! Bouncing now:");
-                StartCoroutine(BobberBounceCoroutine(thingEntering.gameObject));
+                StartCoroutine(BobberBounceCoroutine(collision.gameObject));
                 Debug.Log("Bobber done bouncing!");
             }
+        }
+
+        private void OnTriggerEnter(Collider thingEntering)
+        {
+
         }
 
         private IEnumerator BobberBounceCoroutine(GameObject bobber)
