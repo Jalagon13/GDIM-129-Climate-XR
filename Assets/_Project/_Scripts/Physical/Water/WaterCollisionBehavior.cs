@@ -6,6 +6,7 @@ namespace MagnetFishing
 {
     public class WaterCollisionBehavior : MonoBehaviour
     {
+        public static bool alreadyAnimating = false;
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Bobber"))
