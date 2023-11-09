@@ -13,8 +13,17 @@ namespace MagnetFishing
                 Rigidbody thingRigidbody = collision.gameObject.transform.GetComponent<Rigidbody>();
                 thingRigidbody.velocity = new Vector3(0, 0, 0);
                 Debug.Log("Bobber stopped in its tracks! Bouncing now:");
-                StartCoroutine(BobberBounceCoroutine(collision.gameObject));
-                Debug.Log("Bobber done bouncing!");
+                if (alreadyAnimating == false)
+                {
+                    alreadyAnimating = true;
+                    StartCoroutine(BobberBounceCoroutine(collision.gameObject));
+                    alreadyAnimating = false;
+                    Debug.Log("Bobber done bouncing!");
+                }
+                else
+                {
+                    Debug.Log("Bobber already bouncing!");
+                }
             }
         }
 
