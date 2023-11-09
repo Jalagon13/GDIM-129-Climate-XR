@@ -35,7 +35,7 @@ namespace MagnetFishing
 
             // Now you have the velocity of the GameObject.
             float speed = velocity.magnitude;
-            Debug.Log("Speed: " + speed);
+            //Debug.Log("Speed: " + speed);
 
             // Update the previous position and time for the next frame.
             previousPosition = currentPosition;
