@@ -30,7 +30,7 @@ namespace MagnetFishing
         private void ThrowHook(ISignalParameters parameters)
         {
             DestroyHook();
-
+            Debug.Log("Hook thrown");
             _hook = Instantiate(_hookObject, _rodTipTransform.position += new Vector3(0, 0.15f, 0), Quaternion.identity);
             _hook.InitializeHook(_rodTipTransform);
         }
