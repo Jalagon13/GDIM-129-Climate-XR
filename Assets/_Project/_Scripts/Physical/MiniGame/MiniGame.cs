@@ -6,25 +6,66 @@ namespace MagnetFishing
 {
     public class MiniGame : MonoBehaviour
     {
-        private GameObject _hookObject;
-        private Camera _mainCamera;
+        [SerializeField] private RectTransform _reelBarPivot;
+        [SerializeField] private float _miniGameDuration;
+        [Range(0, 0.1f)]
+        [SerializeField] private float _rotChangeStrength;
+
+        private bool _reeling;
+        private float _rotation = 1;
 
         private void Awake()
         {
-            _mainCamera = Camera.main;
+            GameSignals.ROD_ACTIVATED.AddListener(ReelingIn);
+            GameSignals.ROD_DEACTIVATED.AddListener(NotReelingIn);
         }
 
-        public void Setup(Hook hook)
+        private void OnDestroy()
         {
-            _hookObject = hook.gameObject;
+            GameSignals.ROD_ACTIVATED.RemoveListener(ReelingIn);
+            GameSignals.ROD_DEACTIVATED.RemoveListener(NotReelingIn);
         }
 
-        private void Update()
+        private IEnumerator Start()
         {
-            if (_hookObject == null) return;
+            yield return new WaitForSeconds(_miniGameDuration);
 
-            transform.position = _hookObject.transform.position;
-            transform.LookAt(_mainCamera.transform.position);
+            GameSignals.FISH_GOT_AWAY.Dispatch();
+        }
+
+        private void FixedUpdate()
+        {
+            _reelBarPivot.Rotate(new(0, 0, CalculateRotation()));
+        }
+
+        private void ReelingIn(ISignalParameters parameters)
+        {
+            _reeling = true;
+        }
+
+        private void NotReelingIn(ISignalParameters parameters)
+        {
+            _reeling = false;
+        }
+
+        private float CalculateRotation()
+        {
+            if (_reeling)
+            {
+                _rotation -= _rotChangeStrength;
+
+                if (_rotation < -1)
+                    _rotation = -1;
+            }
+            else
+            {
+                _rotation += _rotChangeStrength;
+
+                if(_rotation > 1)
+                    _rotation = 1;
+            }
+
+            return _rotation;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MagnetFishing
         [SerializeField] private VectorVariable _rodTipPos;
         [SerializeField] private LineRenderer _hookLine;
 
-        private MiniGame _mgInstance;
+        private MiniGame _mg;
         private Rigidbody _rb;
         private LineRenderer _lr;
 
@@ -42,13 +42,12 @@ namespace MagnetFishing
 
         public void StartMiniGame()
         {
-            _mgInstance = Instantiate(_miniGamePrefab);
-            _mgInstance.Setup(this);
+            _mg = Instantiate(_miniGamePrefab, transform.position += Vector3.up, Quaternion.identity);
         }
 
         public void StopMiniGame()
         {
-            Destroy(_mgInstance.gameObject);
+            Destroy(_mg.gameObject);
         }
 
         public void InitializeHook(Transform rodTipTransform)

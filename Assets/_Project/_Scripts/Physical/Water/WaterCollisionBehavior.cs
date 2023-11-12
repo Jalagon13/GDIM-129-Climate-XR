@@ -36,7 +36,8 @@ namespace MagnetFishing
         private IEnumerator BobberBounceCoroutine(GameObject bobber)
         {
             Vector3 originalPosition = bobber.transform.position;
-            while (bobber.transform.position.y < originalPosition.y + 0.5f)
+
+            while (bobber.transform.position.y < originalPosition.y + 0.5f && bobber != null)
             {
                 bobber.transform.position = bobber.transform.position + new Vector3(0, 0.05f, 0);
                 yield return null;
