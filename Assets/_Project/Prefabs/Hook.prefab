@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d832833352ba49901d6cad8002d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _miniGamePrefab: {fileID: 6875651695775391177, guid: c528f0a4b23a63543b772edfafdf2c88, type: 3}
+  _miniGamePrefab: {fileID: 7524156841095156651, guid: c528f0a4b23a63543b772edfafdf2c88, type: 3}
   _secTillFishCaught: 1
   _rodTipPos: {fileID: 11400000, guid: 96814c0dc8d51ba4ea77ebc8245aed87, type: 2}
   _hookLine: {fileID: 6352368353122448115, guid: 9e70409a9c9296e46b129e16d3ca007c, type: 3}

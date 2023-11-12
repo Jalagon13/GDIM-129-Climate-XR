@@ -10,9 +10,9 @@ namespace MagnetFishing
         [SerializeField] private Hook _hookObject;
         [SerializeField] private Transform _rodTipTransform;
 
+        private static Hook _hook;
         private Vector3 _startingPos;
         private Quaternion _startingRot;
-        private static Hook _hook;
 
         private void Awake()
         {
@@ -20,17 +20,41 @@ namespace MagnetFishing
             _startingRot = transform.rotation;
 
             GameSignals.POWER_RELEASED.AddListener(ThrowHook);
+            GameSignals.FISH_CAUGHT.AddListener(FishCaught);
+            GameSignals.FISH_GOT_AWAY.AddListener(FishGotAway);
         }
 
         private void OnDestroy()
         {
             GameSignals.POWER_RELEASED.RemoveListener(ThrowHook);
+            GameSignals.FISH_CAUGHT.RemoveListener(FishCaught);
+            GameSignals.FISH_GOT_AWAY.RemoveListener(FishGotAway);
+        }
+
+        private void FishCaught(ISignalParameters parameters)
+        {
+            DestroyHook();
+
+            // YAY FISH CAUGHT 
+            // Do inventory/game feel stuff here for when fish is caught. or really anywhere as long as its listening to FISH_CAUGHT
+
+            Debug.Log("Fish Caught!");
+        }
+
+        private void FishGotAway(ISignalParameters parameters)
+        {
+            DestroyHook();
+
+            // FISH GOT AWAY
+            // Do inventory/game feel stuff here for when fish got away. or really anywhere as long as its listening to FISH_GOT_AWAY
+
+            Debug.Log("Fish Got Away!");
         }
 
         private void ThrowHook(ISignalParameters parameters)
         {
             DestroyHook();
-            Debug.Log("Hook thrown");
+
             _hook = Instantiate(_hookObject, _rodTipTransform.position += new Vector3(0, 0.15f, 0), Quaternion.identity);
             _hook.InitializeHook(_rodTipTransform);
         }
@@ -56,13 +80,12 @@ namespace MagnetFishing
         // called when rod is selected
         public void FirstSelectEnter(SelectEnterEventArgs args)
         {
-            Debug.Log("Selecting Rod with");
+
         }
 
         // caled when rod is deselected
         public void LastSelectExit()
         {
-            Debug.Log("De Selecting Rod");
             StartCoroutine(ReturnToStartingPos());
         }
 
