@@ -9,6 +9,9 @@ namespace MagnetFishing
         public static bool alreadyAnimating = false;
         private void OnCollisionEnter(Collision collision)
         {
+            // just temporary kinda buggy rn
+            if (true) return;
+
             if (collision.gameObject.CompareTag("Bobber"))
             {
                 Rigidbody thingRigidbody = collision.gameObject.transform.GetComponent<Rigidbody>();
