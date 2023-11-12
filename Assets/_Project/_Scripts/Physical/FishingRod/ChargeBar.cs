@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MagnetFishing
 {
     public class ChargeBar : MonoBehaviour
     {
+        [SerializeField] private Slider _slider;
+
         private RectTransform _chargeBar;
         private TextMeshProUGUI _chargeText;
+        private float _sliderValue = 0;
+        private bool _charging;
 
         private void Awake()
         {
@@ -25,6 +30,17 @@ namespace MagnetFishing
             GameSignals.POWER_RELEASED.RemoveListener(PowerReleased);
         }
 
+        private void FixedUpdate()
+        {
+            if (_charging)
+            {
+                _sliderValue += 0.01f;
+
+                if (_sliderValue >= 1)
+                    _sliderValue = 1;
+            }
+        }
+
         private void Start()
         {
             EnableChargeUI(false);
@@ -32,12 +48,16 @@ namespace MagnetFishing
 
         private void PowerCharging(ISignalParameters parameters)
         {
-            EnableChargeUI(true);
+            _sliderValue = 0f;
+            _charging = true;
 
+            EnableChargeUI(true);
         }
 
         private void PowerReleased(ISignalParameters parameters)
         {
+            _charging = false;
+
             EnableChargeUI(false);
         }
 

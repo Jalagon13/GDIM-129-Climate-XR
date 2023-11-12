@@ -13,6 +13,7 @@ namespace MagnetFishing
 
         private bool _reeling;
         private float _rotation = 1;
+        private Hook _hook;
 
         private void Awake()
         {
@@ -36,6 +37,20 @@ namespace MagnetFishing
         private void FixedUpdate()
         {
             _reelBarPivot.Rotate(new(0, 0, CalculateRotation()));
+
+            SetPosition();
+        }
+
+        private void SetPosition()
+        {
+            if (_hook == null) return;
+
+            transform.SetPositionAndRotation(_hook.transform.position, Quaternion.identity);
+        }
+
+        public void SetupMiniGame(Hook hook)
+        {
+            _hook = hook;
         }
 
         private void ReelingIn(ISignalParameters parameters)

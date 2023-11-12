@@ -43,6 +43,7 @@ namespace MagnetFishing
         public void StartMiniGame()
         {
             _mg = Instantiate(_miniGamePrefab, transform.position += Vector3.up, Quaternion.identity);
+            _mg.SetupMiniGame(this);
         }
 
         public void StopMiniGame()
