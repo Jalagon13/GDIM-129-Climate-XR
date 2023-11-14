@@ -69,13 +69,13 @@ namespace MagnetFishing
         // called when front trigger is pressed
         public void Activate(ActivateEventArgs args)
         {
-            //GameSignals.ROD_ACTIVATED.Dispatch();
+            GameSignals.ROD_ACTIVATED.Dispatch();
         }
 
         // called when front trigger is released
         public void DeActivate(DeactivateEventArgs args)
         {
-            //GameSignals.ROD_DEACTIVATED.Dispatch();
+            GameSignals.ROD_DEACTIVATED.Dispatch();
         }
 
         // called when rod is selected

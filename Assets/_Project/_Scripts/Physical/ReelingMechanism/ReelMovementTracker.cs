@@ -25,10 +25,10 @@ namespace MagnetFishing
         {
             yield return new WaitForSeconds(0.1f);
 
-            if(_isReeling)
-                GameSignals.ROD_ACTIVATED.Dispatch();
-            else
-                GameSignals.ROD_DEACTIVATED.Dispatch();
+            //if(_isReeling)
+            //    GameSignals.ROD_ACTIVATED.Dispatch();
+            //else
+            //    GameSignals.ROD_DEACTIVATED.Dispatch();
 
             StartCoroutine(Start());
         }
