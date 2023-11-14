@@ -53,7 +53,8 @@ namespace MagnetFishing
 
         public void StopMiniGame()
         {
-            Destroy(_mg.gameObject);
+            if(_mg != null)
+                Destroy(_mg.gameObject);
         }
 
         public void InitializeHook(Transform rodTipTransform)
@@ -77,8 +78,8 @@ namespace MagnetFishing
             inWater = true;
             if (alreadyAnimating == false)
             {
-                alreadyAnimating = true;
-                StartCoroutine(BobberBounceCoroutine());
+                /*alreadyAnimating = true;
+                StartCoroutine(BobberBounceCoroutine());*/
             }
             else
             {
