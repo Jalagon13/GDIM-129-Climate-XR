@@ -65,7 +65,6 @@ namespace MagnetFishing
             float originalZ = gameObject.transform.position.z;
             Vector3 XAndZMove = Vector3.MoveTowards(gameObject.transform.position, rodTip.position, 0.05f);
             gameObject.transform.position = new Vector3(XAndZMove.x, gameObject.transform.position.y, XAndZMove.z);
-
         }
 
         public void ToggleInWater(bool value)
@@ -83,41 +82,41 @@ namespace MagnetFishing
             }
             else
             {
-                Debug.Log("Bobber already bouncing!");
+                //Debug.Log("Bobber already bouncing!");
             }
         }
 
         private IEnumerator BobberBounceCoroutine()
         {
-            Debug.Log("Moving bobber now. Original position: " + gameObject.transform.position);
+            //Debug.Log("Moving bobber now. Original position: " + gameObject.transform.position);
             Vector3 originalPosition = gameObject.transform.position;
             for (float x = -0.5f; Math.Abs(x) > 0.005f; x = x * -0.5f)
             {
-                Debug.Log("x is " + x.ToString());
+                //Debug.Log("x is " + x.ToString());
                 if (x < 0.0f)
                 {
-                    Debug.Log("Moving bobber to " + (originalPosition.y + x).ToString());
+                    //Debug.Log("Moving bobber to " + (originalPosition.y + x).ToString());
                     while (gameObject != null && gameObject.transform.position.y > originalPosition.y + x)
                     {
                         gameObject.transform.position = gameObject.transform.position - new Vector3(0, 0.01f, 0);
                         yield return null;
                     }
-                    Debug.Log("Moved!");
+                    //Debug.Log("Moved!");
                 }
                 else
                 {
-                    Debug.Log("Moving bobber to " + (originalPosition.y + x).ToString());
+                    //Debug.Log("Moving bobber to " + (originalPosition.y + x).ToString());
                     while (gameObject != null && gameObject.transform.position.y < originalPosition.y + x)
                     {
                         gameObject.transform.position = gameObject.transform.position + new Vector3(0, 0.01f, 0);
                         yield return null;
                     }
-                    Debug.Log("Moved!");
+                    //Debug.Log("Moved!");
                 }
-                Debug.Log("x will be " + (x * 0.5f).ToString());
+                //Debug.Log("x will be " + (x * 0.5f).ToString());
             }
             alreadyAnimating = false;
-            Debug.Log("Bobber done bouncing!");
+            //Debug.Log("Bobber done bouncing!");
 
         }
     }

@@ -56,11 +56,13 @@ namespace MagnetFishing
         private void ReelingIn(ISignalParameters parameters)
         {
             _reeling = true;
+            Debug.Log("Reeling In");
         }
 
         private void NotReelingIn(ISignalParameters parameters)
         {
             _reeling = false;
+            Debug.Log("NOT Reeling In");
         }
 
         private float CalculateRotation()
