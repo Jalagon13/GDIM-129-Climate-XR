@@ -69,13 +69,13 @@ namespace MagnetFishing
         // called when front trigger is pressed
         public void Activate(ActivateEventArgs args)
         {
-            GameSignals.ROD_ACTIVATED.Dispatch();
+            //GameSignals.ROD_ACTIVATED.Dispatch();
         }
 
         // called when front trigger is released
         public void DeActivate(DeactivateEventArgs args)
         {
-            GameSignals.ROD_DEACTIVATED.Dispatch();
+            //GameSignals.ROD_DEACTIVATED.Dispatch();
         }
 
         // called when rod is selected
@@ -100,15 +100,19 @@ namespace MagnetFishing
         {
             if (_hook != null && _hook.inWater)
             {
-                if (Vector3.Distance(_hook.transform.position, _rodTipTransform.position) > 0.75f)
-                {
-                    _hook.ReelInOneTick(_rodTipTransform);
-                }
-                else // Later on we can have it where if it gets close enough, it reels up! Or just have it destroy like this and then spawn in the trash
-                {
-                    _hook.ToggleInWater(false);
-                    DestroyHook();
-                }
+                _hook.ReelInOneTick(_rodTipTransform);
+
+                // distance is determined by mini game completion, ima leave this blank just for now
+
+                //if (Vector3.Distance(_hook.transform.position, _rodTipTransform.position) > 0.75f)
+                //{
+                //    _hook.ReelInOneTick(_rodTipTransform);
+                //}
+                //else // Later on we can have it where if it gets close enough, it reels up! Or just have it destroy like this and then spawn in the trash
+                //{
+                //    _hook.ToggleInWater(false);
+                //    DestroyHook();
+                //}
             }
         }
     }

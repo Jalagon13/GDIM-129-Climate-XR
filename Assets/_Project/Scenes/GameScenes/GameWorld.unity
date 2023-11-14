@@ -3190,6 +3190,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6592162360964517271, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
   m_PrefabInstance: {fileID: 2076103212}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1898787787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3127728407087826080, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 2076103212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2026024412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3344,6 +3355,10 @@ PrefabInstance:
       propertyPath: m_LeftHandTurnAction.m_UseReference
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6407207605730790461, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1898787787}
     - target: {fileID: 7303196168416792226, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3968,6 +3983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisRod: {fileID: 3527939070217486312}
+  _reelDetectionDistance: 0.05
   _leftControllerTracker: {fileID: 684308814}
   _rightControllerTracker: {fileID: 1805675760}
 --- !u!1001 &4296979631740809147
