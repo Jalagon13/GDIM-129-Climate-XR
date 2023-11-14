@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -94,6 +95,21 @@ namespace MagnetFishing
             yield return new WaitForSeconds(0.75f);
             DestroyHook();
             transform.SetPositionAndRotation(_startingPos, _startingRot);
+        }
+        public void ReelInHook()
+        {
+            if (_hook != null && _hook.inWater)
+            {
+                if (Vector3.Distance(_hook.transform.position, _rodTipTransform.position) > 0.75f)
+                {
+                    _hook.ReelInOneTick(_rodTipTransform);
+                }
+                else // Later on we can have it where if it gets close enough, it reels up! Or just have it destroy like this and then spawn in the trash
+                {
+                    _hook.ToggleInWater(false);
+                    DestroyHook();
+                }
+            }
         }
     }
 }

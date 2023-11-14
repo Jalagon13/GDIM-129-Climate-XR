@@ -1168,6 +1168,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660787008}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &684308814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3471343859196315090, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 2076103212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &796815917
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,6 +3185,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2191886808986063665, guid: e4d1606a919869f41b8e83ad1f979e1b, type: 3}
   m_PrefabInstance: {fileID: 1692999263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1805675760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6592162360964517271, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 2076103212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2026024412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3606,6 +3616,7 @@ GameObject:
   - component: {fileID: 582248905045412861}
   - component: {fileID: 582248905045412858}
   - component: {fileID: 3527939070217486312}
+  - component: {fileID: 3527939070217486313}
   m_Layer: 0
   m_Name: FishingRod
   m_TagString: Untagged
@@ -3944,6 +3955,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hookObject: {fileID: 6049779331458445856, guid: 734cf5530445cd542b02ad6265e27fdb, type: 3}
   _rodTipTransform: {fileID: 830506685}
+--- !u!114 &3527939070217486313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582248905045412856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c605f075d89a64f92cac5d56b499f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _thisRod: {fileID: 3527939070217486312}
+  _leftControllerTracker: {fileID: 684308814}
+  _rightControllerTracker: {fileID: 1805675760}
 --- !u!1001 &4296979631740809147
 PrefabInstance:
   m_ObjectHideFlags: 0
