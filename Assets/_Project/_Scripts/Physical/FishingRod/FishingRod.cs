@@ -20,14 +20,14 @@ namespace MagnetFishing
             _startingPos = transform.position;
             _startingRot = transform.rotation;
 
-            GameSignals.POWER_RELEASED.AddListener(ThrowHook);
+            GameSignals.HOOK_RELEASED.AddListener(ThrowHook);
             GameSignals.FISH_CAUGHT.AddListener(FishCaught);
             GameSignals.FISH_GOT_AWAY.AddListener(FishGotAway);
         }
 
         private void OnDestroy()
         {
-            GameSignals.POWER_RELEASED.RemoveListener(ThrowHook);
+            GameSignals.HOOK_RELEASED.RemoveListener(ThrowHook);
             GameSignals.FISH_CAUGHT.RemoveListener(FishCaught);
             GameSignals.FISH_GOT_AWAY.RemoveListener(FishGotAway);
         }
@@ -54,10 +54,17 @@ namespace MagnetFishing
 
         private void ThrowHook(ISignalParameters parameters)
         {
-            DestroyHook();
+            if (parameters.HasParameter("ForcePercentage"))
+            {
+                float forcePercentage = (float)parameters.GetParameter("ForcePercentage");
 
-            _hook = Instantiate(_hookObject, _rodTipTransform.position += new Vector3(0, 0.15f, 0), Quaternion.identity);
-            _hook.InitializeHook(_rodTipTransform);
+                DestroyHook();
+
+                _hook = Instantiate(_hookObject, _rodTipTransform.position += new Vector3(0, 0.15f, 0), Quaternion.identity);
+                _hook.InitializeHook(_rodTipTransform, forcePercentage);
+            }
+
+
         }
 
         private void DestroyHook()

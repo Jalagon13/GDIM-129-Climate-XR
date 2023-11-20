@@ -10,6 +10,7 @@ namespace MagnetFishing
     {
         [SerializeField] private MiniGame _miniGamePrefab;
         [SerializeField] private float _secTillFishCaught; // temp delete later prolly. for debug for now.
+        [SerializeField] private float _maxThrowForce;
         [SerializeField] private VectorVariable _rodTipPos;
         [SerializeField] private LineRenderer _hookLine;
 
@@ -57,10 +58,11 @@ namespace MagnetFishing
                 Destroy(_mg.gameObject);
         }
 
-        public void InitializeHook(Transform rodTipTransform)
+        public void InitializeHook(Transform rodTipTransform, float forcePercentage)
         {
-            _rb.AddForce(rodTipTransform.forward * 7f, ForceMode.Impulse);
+            _rb.AddForce(rodTipTransform.forward * (forcePercentage * _maxThrowForce), ForceMode.Impulse);
         }
+
         public void ReelInOneTick(Transform rodTip)
         {
             float originalZ = gameObject.transform.position.z;
