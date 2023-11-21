@@ -9,6 +9,7 @@ namespace MagnetFishing
     public class AudioManager : Singleton<AudioManager>
     {
         [SerializeField] private AudioClip _ambientSound;
+        [SerializeField] private AudioClip _loopingMusic;
 
         private readonly static int _audioSourceNum = 10;
         private Queue<AudioSource> _audioSources = new Queue<AudioSource>();
@@ -30,6 +31,7 @@ namespace MagnetFishing
         private void Start()
         {
             PlayClip(_ambientSound, true, false, 0.075f);
+            PlayClip(_loopingMusic, true, false, 0.3f);
         }
 
         public void PlayClip(AudioClip clip, bool looping, bool randPitch, float volume = 0.5f, float pitch = 1f)
