@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GachaSystem : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GachaSystem : MonoBehaviour
     }
 
     public List<GachaItem> gachaPool = new List<GachaItem>();
+    private Dictionary<string, int> drawnItems = new Dictionary<string, int>();
 
     private void Update()
     {
@@ -18,6 +20,12 @@ public class GachaSystem : MonoBehaviour
         {
             DrawItem();
         }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            DisplayDrawnItems();
+        }
+
     }
 
     private void DrawItem()
@@ -36,6 +44,7 @@ public class GachaSystem : MonoBehaviour
         if (Fishing())
         {
             UnityEngine.Debug.Log("Get: " + selectedItem.itemName);
+            AddToDrawnItems(selectedItem.itemName);
             selectedItem.count--;
             if (selectedItem.count <= 0)
             {
@@ -52,5 +61,27 @@ public class GachaSystem : MonoBehaviour
     {
         // random for now
         return UnityEngine.Random.value > 0.5f;
+    }
+
+    private void AddToDrawnItems(string itemName)
+    {
+        if (drawnItems.ContainsKey(itemName))
+        {
+            drawnItems[itemName]++;
+        }
+        else
+        {
+            drawnItems.Add(itemName, 1);
+        }
+    }
+
+    private void DisplayDrawnItems()
+    {
+        var sortedItems = drawnItems.OrderBy(item => item.Key);
+
+        foreach (var item in drawnItems)
+        {
+            UnityEngine.Debug.Log(item.Key + " * " + item.Value);
+        }
     }
 }
