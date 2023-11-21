@@ -6,6 +6,19 @@ namespace MagnetFishing
 {
     public class ChargeCollider : MonoBehaviour
     {
+        private void FixedUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                GameSignals.POWER_CHARGING.Dispatch();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                GameSignals.POWER_RELEASED.Dispatch();
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log($"Collider Entering: {other.gameObject.name}");

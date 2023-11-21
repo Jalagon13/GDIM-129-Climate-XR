@@ -12,7 +12,7 @@ namespace MagnetFishing
 
         private RectTransform _chargeBar;
         private TextMeshProUGUI _chargeText;
-        private float _sliderValue = 0;
+        private float _forcePercentage = 0;
         private bool _charging;
 
         private void Awake()
@@ -30,25 +30,27 @@ namespace MagnetFishing
             GameSignals.POWER_RELEASED.RemoveListener(PowerReleased);
         }
 
-        private void FixedUpdate()
-        {
-            if (_charging)
-            {
-                _sliderValue += 0.01f;
-
-                if (_sliderValue >= 1)
-                    _sliderValue = 1;
-            }
-        }
-
         private void Start()
         {
             EnableChargeUI(false);
         }
 
+        private void FixedUpdate()
+        {
+            if (_charging)
+            {
+                _forcePercentage += 0.01f;
+
+                if (_forcePercentage >= 1)
+                    _forcePercentage = 1;
+
+                _slider.value = _forcePercentage;
+            }
+        }
+
         private void PowerCharging(ISignalParameters parameters)
         {
-            _sliderValue = 0f;
+            _forcePercentage = 0f;
             _charging = true;
 
             EnableChargeUI(true);
@@ -56,6 +58,11 @@ namespace MagnetFishing
 
         private void PowerReleased(ISignalParameters parameters)
         {
+            Signal signal = GameSignals.HOOK_RELEASED;
+            signal.ClearParameters();
+            signal.AddParameter("ForcePercentage", _forcePercentage);
+            signal.Dispatch();
+
             _charging = false;
 
             EnableChargeUI(false);
