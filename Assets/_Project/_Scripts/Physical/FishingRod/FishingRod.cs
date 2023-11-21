@@ -64,14 +64,20 @@ namespace MagnetFishing
 
                 DisableHook();
 
-                _hook.gameObject.SetActive(true);
+                if (_hook != null && _hook.gameObject != null)
+                {
+                    _hook.gameObject.SetActive(true);
+                }
                 _hook.ThrowHook(_rodTipTransform, forcePercentage, _rodTipTransform.position += new Vector3(0, 0.15f, 0));
             }
         }
 
         private void DisableHook()
         {
-            _hook.gameObject.SetActive(false);
+            if (_hook != null && _hook.gameObject != null)
+            {
+                _hook.gameObject.SetActive(false);
+            }
         }
 
         // called when front trigger is pressed
