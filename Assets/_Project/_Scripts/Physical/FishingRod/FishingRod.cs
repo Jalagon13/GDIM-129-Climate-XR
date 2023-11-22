@@ -8,10 +8,9 @@ namespace MagnetFishing
 {
     public class FishingRod : MonoBehaviour
     {
-        [SerializeField] private Hook _hookObject;
+        [SerializeField] private Hook _hook;
         [SerializeField] private Transform _rodTipTransform;
 
-        private static Hook _hook;
         private Vector3 _startingPos;
         private Quaternion _startingRot;
 
@@ -25,6 +24,11 @@ namespace MagnetFishing
             GameSignals.FISH_GOT_AWAY.AddListener(FishGotAway);
         }
 
+        private void Start()
+        {
+            DisableHook();
+        }
+
         private void OnDestroy()
         {
             GameSignals.HOOK_RELEASED.RemoveListener(ThrowHook);
@@ -34,7 +38,7 @@ namespace MagnetFishing
 
         private void FishCaught(ISignalParameters parameters)
         {
-            DestroyHook();
+            DisableHook();
 
             // YAY FISH CAUGHT 
             // Do inventory/game feel stuff here for when fish is caught. or really anywhere as long as its listening to FISH_CAUGHT
@@ -44,7 +48,7 @@ namespace MagnetFishing
 
         private void FishGotAway(ISignalParameters parameters)
         {
-            DestroyHook();
+            DisableHook();
 
             // FISH GOT AWAY
             // Do inventory/game feel stuff here for when fish got away. or really anywhere as long as its listening to FISH_GOT_AWAY
@@ -58,19 +62,22 @@ namespace MagnetFishing
             {
                 float forcePercentage = (float)parameters.GetParameter("ForcePercentage");
 
-                DestroyHook();
+                DisableHook();
 
-                _hook = Instantiate(_hookObject, _rodTipTransform.position += new Vector3(0, 0.15f, 0), Quaternion.identity);
-                _hook.InitializeHook(_rodTipTransform, forcePercentage);
+                if (_hook != null && _hook.gameObject != null)
+                {
+                    _hook.gameObject.SetActive(true);
+                }
+                _hook.ThrowHook(_rodTipTransform, forcePercentage, _rodTipTransform.position += new Vector3(0, 0.15f, 0));
             }
-
-
         }
 
-        private void DestroyHook()
+        private void DisableHook()
         {
-            if (_hook != null)
-                Destroy(_hook.gameObject);
+            if (_hook != null && _hook.gameObject != null)
+            {
+                _hook.gameObject.SetActive(false);
+            }
         }
 
         // called when front trigger is pressed
@@ -100,7 +107,7 @@ namespace MagnetFishing
         private IEnumerator ReturnToStartingPos()
         {
             yield return new WaitForSeconds(0.75f);
-            DestroyHook();
+            DisableHook();
             transform.SetPositionAndRotation(_startingPos, _startingRot);
         }
         public void ReelInHook()

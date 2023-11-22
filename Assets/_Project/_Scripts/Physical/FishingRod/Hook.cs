@@ -27,16 +27,15 @@ namespace MagnetFishing
             _lr = Instantiate(_hookLine);
         }
 
-        private IEnumerator Start()
+        private void OnEnable()
         {
-            yield return new WaitForSeconds(_secTillFishCaught);
-
-            StartMiniGame();
+            _lr.enabled = true;
+            StartCoroutine(DelayBeforeMiniGame());
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            Destroy(_lr.gameObject);
+            _lr.enabled = false;
             StopMiniGame();
         }
 
@@ -44,6 +43,13 @@ namespace MagnetFishing
         {
             _lr.SetPosition(0, _rodTipPos.Value);
             _lr.SetPosition(1, transform.position);
+        }
+
+        private IEnumerator DelayBeforeMiniGame()
+        {
+            yield return new WaitForSeconds(_secTillFishCaught);
+
+            StartMiniGame();
         }
 
         public void StartMiniGame()
@@ -58,8 +64,9 @@ namespace MagnetFishing
                 Destroy(_mg.gameObject);
         }
 
-        public void InitializeHook(Transform rodTipTransform, float forcePercentage)
+        public void ThrowHook(Transform rodTipTransform, float forcePercentage, Vector3 throwPosition)
         {
+            transform.position = throwPosition;
             _rb.AddForce(rodTipTransform.forward * (forcePercentage * _maxThrowForce), ForceMode.Impulse);
         }
 
