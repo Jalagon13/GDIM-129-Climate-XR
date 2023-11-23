@@ -9,7 +9,7 @@ namespace MagnetFishing
     public class AudioManager : MonoBehaviour/*Singleton<AudioManager>*/
     {
         [SerializeField] private AudioClip _ambientSound;
-        [SerializeField] private AudioClip _loopingMusic;
+        //[SerializeField] private AudioClip _loopingMusic;
 
         private static AudioManager _audioManager;
 
@@ -38,7 +38,7 @@ namespace MagnetFishing
         private void Start()
         {
             PlayClip(_ambientSound, true, false, 0.075f);
-            PlayClip(_loopingMusic, true, false, 0.3f);
+            //PlayClip(_loopingMusic, true, false, 0.3f);
         }
 
         public static void PlayClip(AudioClip clip, bool looping, bool randPitch, float volume = 0.5f, float pitch = 1f)
