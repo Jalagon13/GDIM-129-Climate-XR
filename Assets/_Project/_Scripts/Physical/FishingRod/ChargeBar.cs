@@ -17,14 +17,17 @@ namespace MagnetFishing
 
         private void Awake()
         {
-            GameSignals.POWER_CHARGING.AddListener(PowerCharging);
-            GameSignals.POWER_RELEASED.AddListener(PowerReleased);
-
             _chargeBar = transform.GetChild(0).GetComponent<RectTransform>();
             _chargeText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         }
 
-        private void OnDestroy()
+        private void OnEnable()
+        {
+            GameSignals.POWER_CHARGING.AddListener(PowerCharging);
+            GameSignals.POWER_RELEASED.AddListener(PowerReleased);
+        }
+
+        private void OnDisable()
         {
             GameSignals.POWER_CHARGING.RemoveListener(PowerCharging);
             GameSignals.POWER_RELEASED.RemoveListener(PowerReleased);

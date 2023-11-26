@@ -18,22 +18,30 @@ namespace MagnetFishing
         {
             _startingPos = transform.position;
             _startingRot = transform.rotation;
+        }
+
+        private void OnEnable()
+        {
+            DisableHook();
+            transform.SetPositionAndRotation(_startingPos, _startingRot);
 
             GameSignals.HOOK_RELEASED.AddListener(ThrowHook);
             GameSignals.FISH_CAUGHT.AddListener(FishCaught);
             GameSignals.FISH_GOT_AWAY.AddListener(FishGotAway);
         }
 
-        private void Start()
+        private void OnDisable()
         {
             DisableHook();
-        }
 
-        private void OnDestroy()
-        {
             GameSignals.HOOK_RELEASED.RemoveListener(ThrowHook);
             GameSignals.FISH_CAUGHT.RemoveListener(FishCaught);
             GameSignals.FISH_GOT_AWAY.RemoveListener(FishGotAway);
+        }
+
+        private void Start()
+        {
+            DisableHook();
         }
 
         private void FishCaught(ISignalParameters parameters)
@@ -72,7 +80,7 @@ namespace MagnetFishing
             }
         }
 
-        private void DisableHook()
+        private void DisableHook(ISignalParameters parameters = null)
         {
             if (_hook != null && _hook.gameObject != null)
             {
