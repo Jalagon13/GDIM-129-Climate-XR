@@ -18,5 +18,9 @@ namespace MagnetFishing
         public static readonly Signal NOT_REELING_IN = new("NotReelingIn");
         public static readonly Signal FISH_CAUGHT = new("FishCaught");
         public static readonly Signal FISH_GOT_AWAY = new("FishGotAway");
+
+        // dialogue signals
+        public static readonly Signal MAIN_DIALOGUE_STARTED = new("MainDialogueStarted");
+        public static readonly Signal MAIN_DIALOGUE_FINISHED = new("MainDialogueFinished");
     }
 }

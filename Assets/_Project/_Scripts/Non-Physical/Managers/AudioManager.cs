@@ -6,12 +6,20 @@ using Random = UnityEngine.Random;
 
 namespace MagnetFishing
 {
-    public class AudioManager : Singleton<AudioManager>
+    public class AudioManager : MonoBehaviour/*Singleton<AudioManager>*/
     {
         [SerializeField] private AudioClip _ambientSound;
+        //[SerializeField] private AudioClip _loopingMusic;
+
+        private static AudioManager _audioManager;
 
         private readonly static int _audioSourceNum = 10;
         private Queue<AudioSource> _audioSources = new Queue<AudioSource>();
+
+        private void Awake()
+        {
+            _audioManager = this;
+        }
 
         private void OnEnable()
         {
@@ -30,13 +38,14 @@ namespace MagnetFishing
         private void Start()
         {
             PlayClip(_ambientSound, true, false, 0.075f);
+            //PlayClip(_loopingMusic, true, false, 0.3f);
         }
 
-        public void PlayClip(AudioClip clip, bool looping, bool randPitch, float volume = 0.5f, float pitch = 1f)
+        public static void PlayClip(AudioClip clip, bool looping, bool randPitch, float volume = 0.5f, float pitch = 1f)
         {
             if (clip == null) throw new Exception("Cannot PLAY " + clip.name + " because it's null");
 
-            foreach (Transform audioSource in transform)
+            foreach (Transform audioSource in _audioManager.transform)
             {
                 var source = audioSource.GetComponent<AudioSource>();
 
@@ -74,7 +83,7 @@ namespace MagnetFishing
             }
         }
 
-        private void AudioHandle(bool looping, bool randPitch, AudioSource source, AudioClip clip, float volume, float pitch)
+        private static void AudioHandle(bool looping, bool randPitch, AudioSource source, AudioClip clip, float volume, float pitch)
         {
             pitch = randPitch ? Random.Range(pitch - 0.1f, pitch + 0.6f) : pitch;
 
@@ -88,11 +97,11 @@ namespace MagnetFishing
             }
             else
             {
-                StartCoroutine(ClipHandle(source, clip, source.clip.length, pitch, volume));
+                _audioManager.StartCoroutine(ClipHandle(source, clip, source.clip.length, pitch, volume));
             }
         }
 
-        private IEnumerator ClipHandle(AudioSource source, AudioClip clip, float clipLength, float pitch, float volume)
+        private static IEnumerator ClipHandle(AudioSource source, AudioClip clip, float clipLength, float pitch, float volume)
         {
             source.pitch = Mathf.Min(3, pitch);
             source.PlayOneShot(clip, Mathf.Min(1, volume));

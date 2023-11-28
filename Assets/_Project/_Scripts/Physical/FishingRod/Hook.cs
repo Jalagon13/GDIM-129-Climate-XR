@@ -11,6 +11,7 @@ namespace MagnetFishing
         [SerializeField] private MiniGame _miniGamePrefab;
         [SerializeField] private float _secTillFishCaught; // temp delete later prolly. for debug for now.
         [SerializeField] private float _maxThrowForce;
+        [SerializeField] private float _minThrowForce;
         [SerializeField] private VectorVariable _rodTipPos;
         [SerializeField] private LineRenderer _hookLine;
 
@@ -54,7 +55,7 @@ namespace MagnetFishing
 
         public void StartMiniGame()
         {
-            _mg = Instantiate(_miniGamePrefab, transform.position += Vector3.up, Quaternion.identity);
+            _mg = Instantiate(_miniGamePrefab, transform.position + Vector3.up, Quaternion.identity);
             _mg.SetupMiniGame(this);
         }
 
@@ -67,7 +68,7 @@ namespace MagnetFishing
         public void ThrowHook(Transform rodTipTransform, float forcePercentage, Vector3 throwPosition)
         {
             transform.position = throwPosition;
-            _rb.AddForce(rodTipTransform.forward * (forcePercentage * _maxThrowForce), ForceMode.Impulse);
+            _rb.AddForce(rodTipTransform.forward * ((forcePercentage * _maxThrowForce) + _minThrowForce), ForceMode.Impulse);
         }
 
         public void ReelInOneTick(Transform rodTip)

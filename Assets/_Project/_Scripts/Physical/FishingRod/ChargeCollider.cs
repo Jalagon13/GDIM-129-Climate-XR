@@ -6,35 +6,42 @@ namespace MagnetFishing
 {
     public class ChargeCollider : MonoBehaviour
     {
-        private void FixedUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                GameSignals.POWER_CHARGING.Dispatch();
-            }
+        private bool _canCharge;
 
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                GameSignals.POWER_RELEASED.Dispatch();
-            }
+        private void Awake()
+        {
+            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(DiableAbilityToCharge);
+            GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(EnableAbilityToCharge);
+        }
+
+        private void OnDestroy()
+        {
+            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(DiableAbilityToCharge);
+            GameSignals.MAIN_DIALOGUE_FINISHED.RemoveListener(EnableAbilityToCharge);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Collider Entering: {other.gameObject.name}");
-            if (!other.CompareTag("RodTip")) return;
+            if (!other.CompareTag("RodTip") || !_canCharge) return;
 
-            Debug.Log("Power Charging...");
             GameSignals.POWER_CHARGING.Dispatch();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            Debug.Log($"Collider Exiting: {other.gameObject.name}");
-            if (!other.CompareTag("RodTip")) return;
+            if (!other.CompareTag("RodTip") || !_canCharge) return;
 
-            Debug.Log("Power Released!");
             GameSignals.POWER_RELEASED.Dispatch();
+        }
+
+        private void DiableAbilityToCharge(ISignalParameters parameters)
+        {
+            _canCharge = false;
+        }
+
+        private void EnableAbilityToCharge(ISignalParameters parameters)
+        {
+            _canCharge = true;
         }
     }
 }
