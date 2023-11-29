@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ambientSound: {fileID: 8300000, guid: 340d28e0e1e47194883710ff4a73c294, type: 3}
-  _loopingMusic: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
