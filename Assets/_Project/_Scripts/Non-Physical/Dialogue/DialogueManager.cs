@@ -7,6 +7,7 @@ namespace MagnetFishing
 {
     public class DialogueManager : MonoBehaviour
     {
+        [SerializeField] private ItemDisplay _itemDisplay;
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private ScriptObject[] _gameScriptOrder;
 
@@ -19,12 +20,12 @@ namespace MagnetFishing
         {
             _dialogueHolder = transform.GetChild(0).GetComponent<RectTransform>();
 
-            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(StartScript);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.AddListener(StartScript);
         }
 
         private void OnDestroy()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(StartScript);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(StartScript);
         }
 
         private IEnumerator Start()
@@ -33,7 +34,7 @@ namespace MagnetFishing
 
             yield return new WaitForSeconds(3f);
 
-            GameSignals.MAIN_DIALOGUE_STARTED.Dispatch(); // If you want to disable the biginning dialogue, comment out this line of code.
+            GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch(); // If you want to disable the biginning dialogue, comment out this line of code.
         }
 
         private void StartScript(ISignalParameters parameters)
@@ -47,6 +48,9 @@ namespace MagnetFishing
             _currentGameScript = _gameScriptOrder[_gameScriptIndex];
             _currentDialogueIndex = 0;
 
+            if (_currentGameScript.ItemToDisplay != null)
+                _itemDisplay.Display(_currentGameScript.ItemToDisplay);
+
             UpdateText();
             EnableHolder(true);
         }
@@ -57,9 +61,10 @@ namespace MagnetFishing
 
             _currentDialogueIndex = 0;
             _gameScriptIndex++;
+            _itemDisplay.HideDisplay();
 
             EnableHolder(false);
-            StartCoroutine(Delay());
+            //StartCoroutine(Delay());
         }
 
         private IEnumerator Delay() // temp
@@ -72,7 +77,7 @@ namespace MagnetFishing
             }
             else
             {
-                GameSignals.MAIN_DIALOGUE_STARTED.Dispatch();
+                GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
             }
         }
 

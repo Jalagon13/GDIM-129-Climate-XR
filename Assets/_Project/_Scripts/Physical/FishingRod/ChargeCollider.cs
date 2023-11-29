@@ -10,13 +10,13 @@ namespace MagnetFishing
 
         private void Awake()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(DiableAbilityToCharge);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.AddListener(DiableAbilityToCharge);
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(EnableAbilityToCharge);
         }
 
         private void OnDestroy()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(DiableAbilityToCharge);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(DiableAbilityToCharge);
             GameSignals.MAIN_DIALOGUE_FINISHED.RemoveListener(EnableAbilityToCharge);
         }
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
   m_Name: '[Script] BeginningDialogue'
   m_EditorClassIdentifier: 
+  ItemToDisplay: {fileID: 0}
   DialogueScript:
   - 'Grandpa: Hello there! Welcome to my lake!'
   - 'Grandpa: The lake is full of trash! Will you help me clean out the trash?'

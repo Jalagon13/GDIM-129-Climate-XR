@@ -43,6 +43,7 @@ namespace MagnetFishing
                 if (_reelPercentage >= 1)
                 {
                     GameSignals.FISH_CAUGHT.Dispatch();
+                    GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
                     _miniGameWon = true;
                 }
             }
