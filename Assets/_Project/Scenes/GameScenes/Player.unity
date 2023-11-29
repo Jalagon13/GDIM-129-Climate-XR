@@ -971,7 +971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1530,7 +1530,7 @@ Transform:
   m_GameObject: {fileID: 582248905045412856}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0.832, y: 1.285, z: 8.21}
+  m_LocalPosition: {x: 0.806, y: 1.285, z: 8.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _miniGamePrefab: {fileID: 7524156841095156651, guid: c528f0a4b23a63543b772edfafdf2c88, type: 3}
-  _secTillFishCaught: 1
+  _secTillFishCaught: 5
   _maxThrowForce: 8
   _minThrowForce: 3
   _rodTipPos: {fileID: 11400000, guid: 96814c0dc8d51ba4ea77ebc8245aed87, type: 2}

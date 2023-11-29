@@ -49,7 +49,7 @@ namespace MagnetFishing
             _currentDialogueIndex = 0;
 
             if (_currentGameScript.ItemToDisplay != null)
-                _itemDisplay.Display(_currentGameScript.ItemToDisplay);
+                _itemDisplay.Display(_currentGameScript.ItemToDisplay, _currentGameScript.ItemName);
 
             UpdateText();
             EnableHolder(true);
@@ -64,21 +64,6 @@ namespace MagnetFishing
             _itemDisplay.HideDisplay();
 
             EnableHolder(false);
-            //StartCoroutine(Delay());
-        }
-
-        private IEnumerator Delay() // temp
-        {
-            yield return new WaitForSeconds(2f);
-
-            if (_gameScriptOrder.Length <= _gameScriptIndex)
-            {
-                Debug.Log("Reached the end of all of the game's Dialogue");
-            }
-            else
-            {
-                GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
-            }
         }
 
         public void NextButton()

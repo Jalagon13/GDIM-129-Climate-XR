@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
+  m_Name: '[Script] Beginning'
+  m_EditorClassIdentifier: 
+  ItemToDisplay: {fileID: 0}
+  DialogueScript:
+  - "Hey there kiddo, thanks for coming with me to the ole\u2019 lake. "
+  - "It's not what it used to be, but hey\u2026 "
+  - You still get to relax with your favorite grandpa! heh heh
+  - Okay now, I got the hook and rod ready for you.
+  - "Once you grab the rod, all you gotta do is hold back the fishing rod\u2026.
+    Aim\u2026 and release when you generate enough power!"
+  - Here you go! Give it a shot!
