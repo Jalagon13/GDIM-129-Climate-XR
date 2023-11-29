@@ -25,12 +25,14 @@ namespace MagnetFishing
         {
             GameSignals.POWER_CHARGING.AddListener(PowerCharging);
             GameSignals.POWER_RELEASED.AddListener(PowerReleased);
+            GameSignals.ROD_DESELECTED.AddListener(CancelCharge);
         }
 
         private void OnDisable()
         {
             GameSignals.POWER_CHARGING.RemoveListener(PowerCharging);
             GameSignals.POWER_RELEASED.RemoveListener(PowerReleased);
+            GameSignals.ROD_DESELECTED.RemoveListener(CancelCharge);
         }
 
         private void Start()
@@ -48,6 +50,15 @@ namespace MagnetFishing
                     _forcePercentage = 1;
 
                 _slider.value = _forcePercentage;
+            }
+        }
+
+        private void CancelCharge(ISignalParameters parameters)
+        {
+            if (_charging)
+            {
+                EnableChargeUI(false);
+                _charging = false;
             }
         }
 

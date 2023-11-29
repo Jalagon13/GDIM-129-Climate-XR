@@ -11,6 +11,8 @@ namespace MagnetFishing
         public static readonly Signal POWER_RELEASED = new("PowerReleased");
         public static readonly Signal ROD_ACTIVATED = new("RodActived");
         public static readonly Signal ROD_DEACTIVATED = new("RodDeactived");
+        public static readonly Signal ROD_DESELECTED = new("RodDeSelected");
+        public static readonly Signal ROD_SELECTED = new("RodSelected");
         public static readonly Signal HOOK_RELEASED = new("HookReleased");
 
         // mini game signals

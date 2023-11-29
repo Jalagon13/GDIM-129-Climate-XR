@@ -103,7 +103,7 @@ namespace MagnetFishing
         // called when rod is selected
         public void FirstSelectEnter(SelectEnterEventArgs args)
         {
-
+            GameSignals.ROD_SELECTED.Dispatch();
         }
 
         // caled when rod is deselected
@@ -114,7 +114,10 @@ namespace MagnetFishing
 
         private IEnumerator ReturnToStartingPos()
         {
+            GameSignals.ROD_DESELECTED.Dispatch();
+
             yield return new WaitForSeconds(0.75f);
+            
             DisableHook();
             transform.SetPositionAndRotation(_startingPos, _startingRot);
         }

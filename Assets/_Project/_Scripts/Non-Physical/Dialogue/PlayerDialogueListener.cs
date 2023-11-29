@@ -28,6 +28,11 @@ namespace MagnetFishing
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(SetRayDistanceToZero);
         }
 
+        private void Start()
+        {
+            DisableFishingRod();
+        }
+
         private void SetRayDistanceToHundred(ISignalParameters parameters)
         {
             _leftRayInteractor.maxRaycastDistance = 100;
@@ -40,7 +45,7 @@ namespace MagnetFishing
             _rightRayInteractor.maxRaycastDistance = 0;
         }
 
-        private void DisableFishingRod(ISignalParameters parameters)
+        private void DisableFishingRod(ISignalParameters parameters = null)
         {
             _fishingRod.gameObject.SetActive(false);
         }

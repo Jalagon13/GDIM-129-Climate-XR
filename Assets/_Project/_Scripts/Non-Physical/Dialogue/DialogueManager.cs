@@ -39,7 +39,7 @@ namespace MagnetFishing
 
         private void StartScript(ISignalParameters parameters)
         {
-            if(_gameScriptOrder.Length <= _gameScriptIndex)
+            if (_gameScriptOrder.Length <= _gameScriptIndex)
             {
                 Debug.Log("Reached the end of all of the game's Dialogue");
                 return;
