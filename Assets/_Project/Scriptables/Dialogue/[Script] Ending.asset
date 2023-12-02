@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
+  m_Name: '[Script] Ending'
+  m_EditorClassIdentifier: 
+  ItemToDisplay: {fileID: 919132149155446097, guid: de6c6437f8bb5b74284c895349855723, type: 3}
+  ItemName: A Fish!!!!
+  DialogueScript:
+  - "WOW BUD!\r"
+  - "I can\u2019t believe my eyes!\r"
+  - "That there is a real life breathin\u2019 fish!\r"
+  - "\u2026\r"
+  - "I.. I.. I\u2026\r\n\r\n\r"
+  - "Thanks kiddo\u2026 for helpin\u2019 me.\r\n\r\n\r"
+  - "\rIt means a lot."
+  - "I think I got some\u2026 of that fishy water in my eyes. Heh, heh.\r"
+  - "Let\u2019s throw that fella back in the water, so it can spawn and make a buncha
+    babies!\r"
+  - "What a beautiful view.\r"
