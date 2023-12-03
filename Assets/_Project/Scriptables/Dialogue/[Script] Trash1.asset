@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
+  m_Name: '[Script] Trash1'
+  m_EditorClassIdentifier: 
+  ItemToDisplay: {fileID: 919132149155446097, guid: f11bdf7edaf683a47be2dbcc5140a057, type: 3}
+  ItemName: Rubber Boots
+  DialogueScript:
+  - You caught it! Nice one, bud!
+  - "That\u2019s a nice piece-a junk you caught there, bud!"
+  - "That\u2019s a mighty fine rubber boot you got there! I don\u2019t know who would
+    wanna throw that away!"
+  - Huh, you seem disappointed?
+  - "Oh, uhhh\u2026"
+  - "I\u2019m sorry if I forgot to tell you, but\u2026 "
+  - "This pond here doesn\u2019t have no fish in it."
+  - Not for a long while, at least.
+  - With all this junk here, it made it inhospitable for any life.
+  - "But you know, now that I got an extra helping hand around\u2013and some darn
+    good company\u2013I think we can clean this place up, one rubber boot at a time!"
+  - Go on then! Cast your rod out again and let's see what we can find!

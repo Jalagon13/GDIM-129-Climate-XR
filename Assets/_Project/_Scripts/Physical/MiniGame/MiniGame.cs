@@ -7,6 +7,7 @@ namespace MagnetFishing
     public class MiniGame : MonoBehaviour
     {
         [SerializeField] private RectTransform _reelBarPivot;
+        [SerializeField] private RectTransform _catchIconPivot;
         [SerializeField] private float _miniGameDuration;
         [Range(0, 0.1f)]
         [SerializeField] private float _rotChangeStrength;
@@ -37,6 +38,7 @@ namespace MagnetFishing
         private void FixedUpdate()
         {
             _reelBarPivot.Rotate(new(0, 0, CalculateRotation()));
+            _catchIconPivot.Rotate(new(0, 0, -0.5f));
 
             SetPosition();
         }

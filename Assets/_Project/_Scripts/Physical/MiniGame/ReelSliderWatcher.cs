@@ -11,12 +11,18 @@ namespace MagnetFishing
         [Range(0, 0.03f)]
         [SerializeField] private float _reelStrength;
 
+        private GameObject _gameHolder;
+        private GameObject _textCanvas;
         private bool _isReeling;
         private bool _miniGameWon;
+        private bool _wonEventsDispatched;
         private float _reelPercentage;
 
         private void Awake()
         {
+            _gameHolder = transform.GetChild(0).gameObject;
+            _textCanvas = transform.GetChild(1).gameObject;
+
             GameSignals.REELING_IN.AddListener(ReelingIn);
             GameSignals.NOT_REELING_IN.AddListener(NotReelingIn);
         }
@@ -25,6 +31,17 @@ namespace MagnetFishing
         {
             GameSignals.REELING_IN.RemoveListener(ReelingIn);
             GameSignals.NOT_REELING_IN.RemoveListener(NotReelingIn);
+
+            if (_miniGameWon && !_wonEventsDispatched)
+            {
+                GameSignals.FISH_CAUGHT.Dispatch();
+                GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
+            }
+        }
+
+        private void Start()
+        {
+            _textCanvas.SetActive(false);
         }
 
         private void FixedUpdate()
@@ -42,8 +59,7 @@ namespace MagnetFishing
 
                 if (_reelPercentage >= 1)
                 {
-                    GameSignals.FISH_CAUGHT.Dispatch();
-                    _miniGameWon = true;
+                    StartCoroutine(Caught());
                 }
             }
             else
@@ -55,6 +71,21 @@ namespace MagnetFishing
             }
 
             UpdateReelSlider(_reelPercentage);
+        }
+
+        private IEnumerator Caught()
+        {
+            _gameHolder.SetActive(false);
+            _textCanvas.SetActive(true);
+            _miniGameWon = true;
+
+            yield return new WaitForSeconds(3f);
+
+            GameSignals.FISH_CAUGHT.Dispatch();
+            GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
+
+            _wonEventsDispatched = true;
+            _textCanvas.SetActive(false);
         }
 
         private void ReelingIn(ISignalParameters parameters)

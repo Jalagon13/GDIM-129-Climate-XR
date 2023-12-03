@@ -14,18 +14,23 @@ namespace MagnetFishing
 
         private void Awake()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(DisableFishingRod);
-            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(SetRayDistanceToHundred);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.AddListener(DisableFishingRod);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.AddListener(SetRayDistanceToHundred);
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(EnableFishingRod);
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(SetRayDistanceToZero);
         }
 
         private void OnDestroy()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(DisableFishingRod);
-            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(SetRayDistanceToHundred);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(DisableFishingRod);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(SetRayDistanceToHundred);
             GameSignals.MAIN_DIALOGUE_FINISHED.RemoveListener(EnableFishingRod);
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(SetRayDistanceToZero);
+        }
+
+        private void Start()
+        {
+            DisableFishingRod();
         }
 
         private void SetRayDistanceToHundred(ISignalParameters parameters)
@@ -40,7 +45,7 @@ namespace MagnetFishing
             _rightRayInteractor.maxRaycastDistance = 0;
         }
 
-        private void DisableFishingRod(ISignalParameters parameters)
+        private void DisableFishingRod(ISignalParameters parameters = null)
         {
             _fishingRod.gameObject.SetActive(false);
         }

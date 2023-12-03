@@ -10,14 +10,24 @@ namespace MagnetFishing
 
         private void Awake()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.AddListener(DiableAbilityToCharge);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.AddListener(DiableAbilityToCharge);
+            GameSignals.HOOK_RELEASED.AddListener(DiableAbilityToCharge);
             GameSignals.MAIN_DIALOGUE_FINISHED.AddListener(EnableAbilityToCharge);
+            GameSignals.FISH_CAUGHT.AddListener(EnableAbilityToCharge);
+            GameSignals.FISH_GOT_AWAY.AddListener(EnableAbilityToCharge);
+            GameSignals.ROD_DESELECTED.AddListener(DiableAbilityToCharge);
+            GameSignals.ROD_SELECTED.AddListener(EnableAbilityToCharge);
         }
 
         private void OnDestroy()
         {
-            GameSignals.MAIN_DIALOGUE_STARTED.RemoveListener(DiableAbilityToCharge);
+            GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(DiableAbilityToCharge);
+            GameSignals.HOOK_RELEASED.RemoveListener(DiableAbilityToCharge);
             GameSignals.MAIN_DIALOGUE_FINISHED.RemoveListener(EnableAbilityToCharge);
+            GameSignals.FISH_CAUGHT.RemoveListener(EnableAbilityToCharge);
+            GameSignals.FISH_GOT_AWAY.RemoveListener(EnableAbilityToCharge);
+            GameSignals.ROD_DESELECTED.RemoveListener(DiableAbilityToCharge);
+            GameSignals.ROD_SELECTED.RemoveListener(EnableAbilityToCharge);
         }
 
         private void OnTriggerEnter(Collider other)

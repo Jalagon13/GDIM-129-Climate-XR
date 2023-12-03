@@ -11,6 +11,8 @@ namespace MagnetFishing
         public static readonly Signal POWER_RELEASED = new("PowerReleased");
         public static readonly Signal ROD_ACTIVATED = new("RodActived");
         public static readonly Signal ROD_DEACTIVATED = new("RodDeactived");
+        public static readonly Signal ROD_DESELECTED = new("RodDeSelected");
+        public static readonly Signal ROD_SELECTED = new("RodSelected");
         public static readonly Signal HOOK_RELEASED = new("HookReleased");
 
         // mini game signals
@@ -20,7 +22,7 @@ namespace MagnetFishing
         public static readonly Signal FISH_GOT_AWAY = new("FishGotAway");
 
         // dialogue signals
-        public static readonly Signal MAIN_DIALOGUE_STARTED = new("MainDialogueStarted");
+        public static readonly Signal START_NEXT_MAIN_DIALOGUE = new("MainDialogueStarted");
         public static readonly Signal MAIN_DIALOGUE_FINISHED = new("MainDialogueFinished");
     }
 }
