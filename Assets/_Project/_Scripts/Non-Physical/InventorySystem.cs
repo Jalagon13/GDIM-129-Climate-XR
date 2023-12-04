@@ -15,7 +15,12 @@ namespace MagnetFishing
         public TMP_Text descriptionText; 
         public List<Button> itemSlots; 
         public GameObject inventoryPanel; 
-        private Dictionary<string, string> itemDescriptions = new Dictionary<string, string>(); 
+        private Dictionary<string, string> itemDescriptions = new Dictionary<string, string>();
+
+        public Transform player; // 玩家的引用
+        public Transform itemToCheck; // 要检测的特定物品
+        public float checkDistance = 5.0f; // 检测距离
+        public bool enableDistanceCheck = true; // 是否启用距离检测
 
         void Start()
         {
@@ -29,21 +34,42 @@ namespace MagnetFishing
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Y))
+            // 检测是否按下了 Y 键
+            if (Input.GetKeyDown(KeyCode.Y) && IsPlayerInRange())
             {
-                // toggle activity
-                inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+                ToggleInventory();
+            }
 
-                // toggle transparent
-                if (inventoryPanel.activeSelf)
-                {
-                    UpdateInventoryDisplay();
-                    SetTextTransparency(descriptionText, 1); 
-                }
-                else
-                {
-                    SetTextTransparency(descriptionText, 0); 
-                }
+            // 如果玩家离开检测距离，自动关闭库存
+            if (inventoryPanel.activeSelf && !IsPlayerInRange())
+            {
+                inventoryPanel.SetActive(false);
+            }
+        }
+
+
+        private bool IsPlayerInRange()
+        {
+           if (!enableDistanceCheck || itemToCheck == null || player == null)
+                return true;
+
+
+            return Vector3.Distance(player.position, itemToCheck.position) <= checkDistance;
+        }
+
+        private void ToggleInventory()
+        {
+            bool isActive = !inventoryPanel.activeSelf;
+            inventoryPanel.SetActive(isActive);
+
+            if (isActive)
+            {
+                UpdateInventoryDisplay();
+                SetTextTransparency(descriptionText, 1); // 设置文字为不透明
+            }
+            else
+            {
+                SetTextTransparency(descriptionText, 0); // 设置文字为全透明
             }
         }
 
