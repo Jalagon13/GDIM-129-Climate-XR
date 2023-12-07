@@ -23,7 +23,7 @@ namespace MagnetFishing
 
         private Dictionary<string, int> caughtFishes = new Dictionary<string, int>();
         private Fish currentFish;
-        private int fishiesCaughtCounter = 1;
+        private int fishiesCaughtCounter = 0;
 
         private Vector3 _startingPos;
         private Quaternion _startingRot;
@@ -85,9 +85,9 @@ namespace MagnetFishing
             }
             DisableHook();
             // increment fishes caught.
-            if (fishiesCaughtCounter == uncaughtFishes.Count)
+            if (fishiesCaughtCounter == uncaughtFishes.Count-1)
             {
-                fishiesCaughtCounter = 1;
+                fishiesCaughtCounter = 0;
             }
             else
             {
@@ -192,7 +192,7 @@ namespace MagnetFishing
 
                 // CURRENTLY ISN'T RANDOM, SO WE'LL INCREMENT ONE BY ONE FOR NOW.
                 UnityEngine.Debug.Log($"fishiesCaughtCounter is {fishiesCaughtCounter}");
-                currentFish = uncaughtFishes[fishiesCaughtCounter-1];
+                currentFish = uncaughtFishes[fishiesCaughtCounter];
                 UnityEngine.Debug.Log($"Next fish is {currentFish}");
             }
         }
