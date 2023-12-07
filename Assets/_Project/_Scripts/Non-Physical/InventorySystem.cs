@@ -13,6 +13,7 @@ namespace MagnetFishing
         public TMP_Text descriptionText;
         public List<Button> itemSlots;
         public GameObject inventoryPanel;
+        public Button openInventory;
         private Dictionary<string, string> itemDescriptions = new Dictionary<string, string>();
 
         public Transform player;
@@ -22,6 +23,10 @@ namespace MagnetFishing
 
         void Start()
         {
+            openInventory.gameObject.SetActive(true);
+            openInventory.onClick.AddListener(() => {
+                ToggleInventory(); // toggles the inventory
+            });
             inventoryPanel.SetActive(false);
             SetTextTransparency(descriptionText, 0);
 
@@ -31,7 +36,7 @@ namespace MagnetFishing
             fishingRod = FindObjectOfType<FishingRod>();
             if (fishingRod == null)
             {
-                Debug.LogError("FishingRod not found in the scene.");
+                UnityEngine.Debug.LogError("FishingRod not found in the scene.");
             }
         }
 
@@ -82,9 +87,9 @@ namespace MagnetFishing
         private void InitializeItemDescriptions()
         {
             // Initialize with predefined item descriptions
-            itemDescriptions.Add("A", "This is A");
-            itemDescriptions.Add("B", "This is B");
-            itemDescriptions.Add("C", "This is C");
+            itemDescriptions.Add("Rubber Boot", "Reuse and upcycle! If only you had a pair!");
+            itemDescriptions.Add("Plastic Loofah", "Microplastics, yuck! If only there were a more natural alternative...");
+            itemDescriptions.Add("Fish", "A REAL LIVE FISH! WOW!");
         }
 
         private void InitializeItemSlots()
@@ -120,7 +125,7 @@ namespace MagnetFishing
 
                     string itemName = item.Key;
                     slot.onClick.AddListener(() => {
-                        Debug.Log("Button clicked for item: " + itemName);
+                        UnityEngine.Debug.Log("Button clicked for item: " + itemName);
                         ShowDescription(itemName); // Show description based on the item name
                     });
                 }

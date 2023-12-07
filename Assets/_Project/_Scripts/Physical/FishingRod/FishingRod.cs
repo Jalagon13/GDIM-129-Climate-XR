@@ -23,6 +23,7 @@ namespace MagnetFishing
 
         private Dictionary<string, int> caughtFishes = new Dictionary<string, int>();
         private Fish currentFish;
+        private int fishiesCaughtCounter = 1;
 
         private Vector3 _startingPos;
         private Quaternion _startingRot;
@@ -83,6 +84,16 @@ namespace MagnetFishing
                 UnityEngine.Debug.Log(currentFish.Name + " Caught!");
             }
             DisableHook();
+            // increment fishes caught.
+            if (fishiesCaughtCounter == uncaughtFishes.Count)
+            {
+                fishiesCaughtCounter = 1;
+            }
+            else
+            {
+                fishiesCaughtCounter++;
+            }
+            //
             SelectFish(); // Select a new fish
         }
 
@@ -90,7 +101,8 @@ namespace MagnetFishing
         {
             UnityEngine.Debug.Log(currentFish != null ? currentFish.Name + " Got Away!" : "Fish Got Away!");
             DisableHook();
-            SelectFish(); // Select a new fish
+            /*SelectFish(); // Select a new fish*/
+            // REMOVED THE ABOVE LINE BECAUSE WE DON'T WANT TO SELECT A NEW FISH. WE WANT TO GO IN THE PROPER ORDER.
         }
 
         private void ThrowHook(ISignalParameters parameters)
@@ -172,10 +184,16 @@ namespace MagnetFishing
 
         private void SelectFish()
         {
+            UnityEngine.Debug.Log($"Current fish is {currentFish}");
             if (uncaughtFishes.Count > 0)
             {
-                int index = UnityEngine.Random.Range(0, uncaughtFishes.Count);
-                currentFish = uncaughtFishes[index];
+                /*int index = UnityEngine.Random.Range(0, uncaughtFishes.Count);
+                currentFish = uncaughtFishes[index];*/
+
+                // CURRENTLY ISN'T RANDOM, SO WE'LL INCREMENT ONE BY ONE FOR NOW.
+                UnityEngine.Debug.Log($"fishiesCaughtCounter is {fishiesCaughtCounter}");
+                currentFish = uncaughtFishes[fishiesCaughtCounter-1];
+                UnityEngine.Debug.Log($"Next fish is {currentFish}");
             }
         }
         //debug only, display all fish that caught

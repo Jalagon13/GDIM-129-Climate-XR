@@ -1001,7 +1001,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1706512685572454453, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Cameras.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706512685572454453, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Cameras.Array.data[0]
@@ -1670,9 +1670,9 @@ MonoBehaviour:
   _hook: {fileID: 7090652612882025079}
   _rodTipTransform: {fileID: 830506685}
   uncaughtFishes:
-  - Name: A
-  - Name: B
-  - Name: A
+  - Name: Rubber Boot
+  - Name: Plastic Loofah
+  - Name: Fish
   - Name: C
 --- !u!114 &3527939070217486313
 MonoBehaviour:
