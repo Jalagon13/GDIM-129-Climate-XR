@@ -1669,6 +1669,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hook: {fileID: 7090652612882025079}
   _rodTipTransform: {fileID: 830506685}
+  uncaughtFishes:
+  - Name: A
+  - Name: B
+  - Name: A
+  - Name: C
 --- !u!114 &3527939070217486313
 MonoBehaviour:
   m_ObjectHideFlags: 0
