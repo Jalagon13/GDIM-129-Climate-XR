@@ -1,18 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace MagnetFishing
 {
+
+    [Serializable]
+    public class Fish
+    {
+        public string Name;
+    }
+
     public class FishingRod : MonoBehaviour
     {
         [SerializeField] private Hook _hook;
         [SerializeField] private Transform _rodTipTransform;
+        [SerializeField] private List<Fish> uncaughtFishes = new List<Fish>();
+
+        private Dictionary<string, int> caughtFishes = new Dictionary<string, int>();
+        private Fish currentFish;
 
         private Vector3 _startingPos;
         private Quaternion _startingRot;
+
+
+        // Public method to get the caught fishes
+        public Dictionary<string, int> GetCaughtFishes()
+        {
+            return caughtFishes;
+        }
 
         private void Awake()
         {
@@ -42,26 +62,35 @@ namespace MagnetFishing
         private void Start()
         {
             DisableHook();
+            SelectFish(); // Select the first fish
         }
 
         private void FishCaught(ISignalParameters parameters)
         {
+            if (currentFish != null)
+            {
+                // Remove from uncaught and add/update in caught
+                uncaughtFishes.Remove(currentFish);
+                if (caughtFishes.ContainsKey(currentFish.Name))
+                {
+                    caughtFishes[currentFish.Name]++;
+                }
+                else
+                {
+                    caughtFishes.Add(currentFish.Name, 1);
+                }
+
+                UnityEngine.Debug.Log(currentFish.Name + " Caught!");
+            }
             DisableHook();
-
-            // YAY FISH CAUGHT 
-            // Do inventory/game feel stuff here for when fish is caught. or really anywhere as long as its listening to FISH_CAUGHT
-
-            Debug.Log("Fish Caught!");
+            SelectFish(); // Select a new fish
         }
 
         private void FishGotAway(ISignalParameters parameters)
         {
+            UnityEngine.Debug.Log(currentFish != null ? currentFish.Name + " Got Away!" : "Fish Got Away!");
             DisableHook();
-
-            // FISH GOT AWAY
-            // Do inventory/game feel stuff here for when fish got away. or really anywhere as long as its listening to FISH_GOT_AWAY
-
-            Debug.Log("Fish Got Away!");
+            SelectFish(); // Select a new fish
         }
 
         private void ThrowHook(ISignalParameters parameters)
@@ -138,6 +167,23 @@ namespace MagnetFishing
                 //    _hook.ToggleInWater(false);
                 //    DestroyHook();
                 //}
+            }
+        }
+
+        private void SelectFish()
+        {
+            if (uncaughtFishes.Count > 0)
+            {
+                int index = UnityEngine.Random.Range(0, uncaughtFishes.Count);
+                currentFish = uncaughtFishes[index];
+            }
+        }
+        //debug only, display all fish that caught
+        private void DisplayCaughtFishes()
+        {
+            foreach (var pair in caughtFishes)
+            {
+                UnityEngine.Debug.Log($"Caught {pair.Key}: {pair.Value} times.");
             }
         }
     }
