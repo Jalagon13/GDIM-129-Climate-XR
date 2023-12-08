@@ -164,7 +164,7 @@ namespace MagnetFishing
         }
         public void ReelInHook()
         {
-            if (_hook != null && _hook.inWater)
+            if (_hook != null)
             {
                 _hook.ReelInOneTick(_rodTipTransform);
 

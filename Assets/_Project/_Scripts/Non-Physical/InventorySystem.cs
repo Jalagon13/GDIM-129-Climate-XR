@@ -87,7 +87,7 @@ namespace MagnetFishing
         private void InitializeItemDescriptions()
         {
             // Initialize with predefined item descriptions
-            itemDescriptions.Add("Rubber Boot", "Reuse and upcycle! If only you had a pair!");
+            itemDescriptions.Add("Rubber Boot", "Reuse and upcycle. If only you had a pair!");
             itemDescriptions.Add("Plastic Loofah", "Microplastics, yuck! If only there were a more natural alternative...");
             itemDescriptions.Add("Fish", "A REAL LIVE FISH! WOW!");
         }
