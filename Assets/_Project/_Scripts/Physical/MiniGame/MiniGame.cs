@@ -10,7 +10,7 @@ namespace MagnetFishing
     {
         [SerializeField] private RectTransform _reelBarPivot;
         [SerializeField] private RectTransform _catchIconPivot;
-        [SerializeField] private AudioClip _miniGameCompleteSound;
+
         [SerializeField] private float _miniGameDuration;
         [Range(0, 0.1f)]
         [SerializeField] private float _rotChangeStrength;
