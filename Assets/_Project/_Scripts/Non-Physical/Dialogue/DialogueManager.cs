@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,7 @@ namespace MagnetFishing
     {
         [SerializeField] private ItemDisplay _itemDisplay;
         [SerializeField] private TextMeshProUGUI _dialogueText;
+        [SerializeField] private AudioClip _buttonPressSound;
         [SerializeField] private ScriptObject[] _gameScriptOrder;
 
         private int _gameScriptIndex = 0;
@@ -69,7 +71,7 @@ namespace MagnetFishing
         public void NextButton()
         {
             _currentDialogueIndex++;
-
+            MMSoundManagerSoundPlayEvent.Trigger(_buttonPressSound, MMSoundManager.MMSoundManagerTracks.Sfx, transform.position);
             if(_currentGameScript.DialogueScript.Length <= _currentDialogueIndex)
             {
                 EndScript();

@@ -1,3 +1,5 @@
+using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +10,7 @@ namespace MagnetFishing
     {
         [SerializeField] private RectTransform _reelBarPivot;
         [SerializeField] private RectTransform _catchIconPivot;
+        [SerializeField] private AudioClip _miniGameCompleteSound;
         [SerializeField] private float _miniGameDuration;
         [Range(0, 0.1f)]
         [SerializeField] private float _rotChangeStrength;
@@ -58,13 +61,11 @@ namespace MagnetFishing
         private void ReelingIn(ISignalParameters parameters)
         {
             _reeling = true;
-            Debug.Log("Reeling In");
         }
 
         private void NotReelingIn(ISignalParameters parameters)
         {
             _reeling = false;
-            Debug.Log("NOT Reeling In");
         }
 
         private float CalculateRotation()

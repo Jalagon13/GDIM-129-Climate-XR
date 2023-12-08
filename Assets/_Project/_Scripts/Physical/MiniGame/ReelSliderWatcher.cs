@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace MagnetFishing
     public class ReelSliderWatcher : MonoBehaviour
     {
         [SerializeField] private Image _reelSlider;
+        [SerializeField] private MMF_Player _reelingInFeedback;
+        [SerializeField] private MMF_Player _miniGameCompleteFeedback;
         [Range(0, 0.03f)]
         [SerializeField] private float _reelStrength;
 
@@ -78,6 +81,8 @@ namespace MagnetFishing
             _gameHolder.SetActive(false);
             _textCanvas.SetActive(true);
             _miniGameWon = true;
+            _miniGameCompleteFeedback?.PlayFeedbacks();
+            _reelingInFeedback?.StopFeedbacks();
 
             yield return new WaitForSeconds(3f);
 
@@ -91,11 +96,13 @@ namespace MagnetFishing
         private void ReelingIn(ISignalParameters parameters)
         {
             _isReeling = true;
+            _reelingInFeedback?.PlayFeedbacks();
         }
 
         private void NotReelingIn(ISignalParameters parameters)
         {
             _isReeling = false;
+            _reelingInFeedback?.StopFeedbacks();
         }
 
         private void UpdateReelSlider(float percentage)
