@@ -17581,10 +17581,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lakeMaterialOrder:
-  - {fileID: 2100000, guid: 39a256d1f9615ee47913d2807e0991fc, type: 2}
+  - {fileID: -389402008792246631, guid: 2b0c4bbc795c1cd458a0e991993226f3, type: 3}
+  - {fileID: 2100000, guid: b645090d451e5134bb9e193a11a87115, type: 2}
   - {fileID: 2100000, guid: 13bd9b074016f5a48aba4603649bfcf2, type: 2}
   - {fileID: 2100000, guid: 575b7958ab5ded54283211ce53256651, type: 2}
-  - {fileID: 2100000, guid: b645090d451e5134bb9e193a11a87115, type: 2}
 --- !u!1001 &1271047409
 PrefabInstance:
   m_ObjectHideFlags: 0
