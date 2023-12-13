@@ -130,21 +130,21 @@ namespace MagnetFishing
         }
 
         // called when front trigger is pressed
-        public void Activate(ActivateEventArgs args)
+        public void Activate(ActivateEventArgs args = null)
         {
             GameSignals.ROD_ACTIVATED.Dispatch();
         }
 
         // called when front trigger is released
-        public void DeActivate(DeactivateEventArgs args)
+        public void DeActivate(DeactivateEventArgs args = null)
         {
-            GameSignals.ROD_DEACTIVATED.Dispatch();
+            //GameSignals.ROD_DEACTIVATED.Dispatch();
         }
 
         // called when rod is selected
         public void FirstSelectEnter(SelectEnterEventArgs args)
         {
-            GameSignals.ROD_SELECTED.Dispatch();
+            //GameSignals.ROD_SELECTED.Dispatch();
         }
 
         // caled when rod is deselected

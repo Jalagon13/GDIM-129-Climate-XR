@@ -9,7 +9,7 @@ namespace MagnetFishing
         [SerializeField] private Material[] _lakeMaterialOrder;
 
         private MeshRenderer _mr;
-        private int _counter;
+        private int _counter = 0;
 
         private void Awake()
         {
@@ -25,7 +25,7 @@ namespace MagnetFishing
 
         private void ChangeLakeMaterial(ISignalParameters parameters)
         {
-            if (_counter > _lakeMaterialOrder.Length) return;
+            if (_counter >= _lakeMaterialOrder.Length) return;
 
             _mr.material = _lakeMaterialOrder[_counter];
             _counter++;
