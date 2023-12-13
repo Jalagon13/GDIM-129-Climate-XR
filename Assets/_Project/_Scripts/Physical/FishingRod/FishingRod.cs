@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace MagnetFishing
     {
         [SerializeField] private Hook _hook;
         [SerializeField] private Transform _rodTipTransform;
+        [SerializeField] private AudioClip _rodGrip;
+        [SerializeField] private AudioClip _rodLetGo;
         [SerializeField] private List<Fish> uncaughtFishes = new List<Fish>();
 
         private Dictionary<string, int> caughtFishes = new Dictionary<string, int>();
@@ -145,11 +148,14 @@ namespace MagnetFishing
         public void FirstSelectEnter(SelectEnterEventArgs args)
         {
             //GameSignals.ROD_SELECTED.Dispatch();
+            GameSignals.ROD_SELECTED.Dispatch();
+            MMSoundManagerSoundPlayEvent.Trigger(_rodGrip, MMSoundManager.MMSoundManagerTracks.Sfx, transform.position);
         }
 
         // caled when rod is deselected
         public void LastSelectExit()
         {
+            GameSignals.ROD_DESELECTED.Dispatch();
             StartCoroutine(ReturnToStartingPos());
         }
 
@@ -158,7 +164,7 @@ namespace MagnetFishing
             GameSignals.ROD_DESELECTED.Dispatch();
 
             yield return new WaitForSeconds(0.75f);
-            
+            MMSoundManagerSoundPlayEvent.Trigger(_rodLetGo, MMSoundManager.MMSoundManagerTracks.Sfx, transform.position);
             DisableHook();
             transform.SetPositionAndRotation(_startingPos, _startingRot);
         }

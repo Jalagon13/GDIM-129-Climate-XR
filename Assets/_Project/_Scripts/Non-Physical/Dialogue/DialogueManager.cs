@@ -30,13 +30,15 @@ namespace MagnetFishing
             GameSignals.START_NEXT_MAIN_DIALOGUE.RemoveListener(StartScript);
         }
 
-        private IEnumerator Start()
+        private void Start()
         {
             EnableHolder(false);
+        }
 
-            yield return new WaitForSeconds(3f);
-
+        public void StartGame()
+        {
             GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch(); // If you want to disable the biginning dialogue, comment out this line of code.
+            MMSoundManagerSoundPlayEvent.Trigger(_buttonPressSound, MMSoundManager.MMSoundManagerTracks.Sfx, transform.position);
         }
 
         private void StartScript(ISignalParameters parameters)

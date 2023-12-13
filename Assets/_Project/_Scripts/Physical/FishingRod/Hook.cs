@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace MagnetFishing
         [SerializeField] private float _minThrowForce;
         [SerializeField] private VectorVariable _rodTipPos;
         [SerializeField] private LineRenderer _hookLine;
+        [SerializeField] private MMF_Player _castFeedback;
+        [SerializeField] private MMF_Player _lakeEnterFeedback;
 
         private MiniGame _mg;
         private Rigidbody _rb;
@@ -31,6 +34,7 @@ namespace MagnetFishing
         private void OnEnable()
         {
             _lr.enabled = true;
+            _castFeedback?.PlayFeedbacks();
             StartCoroutine(DelayBeforeMiniGame());
         }
 
@@ -44,6 +48,14 @@ namespace MagnetFishing
         {
             _lr.SetPosition(0, _rodTipPos.Value);
             _lr.SetPosition(1, transform.position);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.transform.TryGetComponent<WaterCollisionBehavior>(out var behavior))
+            {
+                _lakeEnterFeedback?.PlayFeedbacks();
+            }
         }
 
         private IEnumerator DelayBeforeMiniGame()

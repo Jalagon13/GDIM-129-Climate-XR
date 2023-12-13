@@ -31,9 +31,10 @@ namespace MagnetFishing
         private void Start()
         {
             DisableFishingRod();
+            SetRayDistanceToHundred();
         }
 
-        private void SetRayDistanceToHundred(ISignalParameters parameters)
+        private void SetRayDistanceToHundred(ISignalParameters parameters = null)
         {
             _leftRayInteractor.maxRaycastDistance = 100;
             _rightRayInteractor.maxRaycastDistance = 100;
