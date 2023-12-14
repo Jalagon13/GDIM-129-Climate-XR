@@ -15,6 +15,7 @@ namespace MagnetFishing
         public GameObject inventoryPanel;
         public Button openInventory;
         private Dictionary<string, string> itemDescriptions = new Dictionary<string, string>();
+        private List<string> itemsOrder = new List<string>(){ "Plastic Toothbrush", "Bamboo Toothbrush", "Styrofoam To-Go Box", "Metal Food Tin", "Fish" };
 
         public Transform player;
         public Transform itemToCheck;
@@ -119,7 +120,7 @@ namespace MagnetFishing
                 var slot = itemSlots[i];
                 var textComponent = slot.GetComponentInChildren<TMP_Text>();
 
-                if (i < sequentiallyCaughtItems.Count)
+                if (i < fishingRod.fishiesCaughtCounter && i < itemsOrder.Count)
                 {
                     var item = sequentiallyCaughtItems[i];
                     textComponent.text = item.Key + " x" + item.Value; // Display item name and count

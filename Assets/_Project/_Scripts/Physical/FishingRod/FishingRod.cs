@@ -26,7 +26,7 @@ namespace MagnetFishing
 
         private Dictionary<string, int> caughtFishes = new Dictionary<string, int>();
         private Fish currentFish;
-        private int fishiesCaughtCounter = 0;
+        public int fishiesCaughtCounter = 0;
 
         private Vector3 _startingPos;
         private Quaternion _startingRot;

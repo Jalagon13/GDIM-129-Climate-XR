@@ -2136,6 +2136,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5a5e72c011c57647ac37001aed52e5c, type: 2}
   - {fileID: 11400000, guid: 90a0aea804bba23469a65d7ad0ca9f59, type: 2}
   - {fileID: 11400000, guid: 2e36a579b12525b459021e0cae96b026, type: 2}
+  _audioFiles: []
 --- !u!1001 &121029112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20901,11 +20902,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lakeMaterialOrder:
-  - {fileID: -389402008792246631, guid: 2b0c4bbc795c1cd458a0e991993226f3, type: 3}
   - {fileID: 2100000, guid: 53a5faf09f99ca745898601dc5b44377, type: 2}
   - {fileID: 2100000, guid: 575b7958ab5ded54283211ce53256651, type: 2}
   - {fileID: 2100000, guid: eb486082f465b4e4cb877d1ddb8fcbaf, type: 2}
   - {fileID: 2100000, guid: b645090d451e5134bb9e193a11a87115, type: 2}
+  - {fileID: 2100000, guid: 13bd9b074016f5a48aba4603649bfcf2, type: 2}
   - {fileID: 2100000, guid: 13bd9b074016f5a48aba4603649bfcf2, type: 2}
 --- !u!1001 &1271047409
 PrefabInstance:
@@ -22036,9 +22037,9 @@ Transform:
   m_GameObject: {fileID: 1445967681}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4055798, y: 0.579228, z: 0.579228, w: 0.4055798}
-  m_LocalPosition: {x: 0.252, y: 1.57, z: 8.792}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.252, y: 1.473, z: 8.792}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 110, z: 0}
@@ -31425,10 +31426,16 @@ MonoBehaviour:
   _rodGrip: {fileID: 8300000, guid: 02121cc507b53c2489410a4889effc75, type: 3}
   _rodLetGo: {fileID: 8300000, guid: f87d61724458db44b912aa1d949171ca, type: 3}
   uncaughtFishes:
-  - Name: Rubber Boot
-  - Name: Plastic Loofah
+  - Name: Plastic Toothbrush
+  - Name: Blank
+  - Name: Bamboo Toothbrush
+  - Name: Blank
+  - Name: Styrofoam To-Go Box
+  - Name: Blank
+  - Name: Metal Food Tin
+  - Name: Blank
   - Name: Fish
-  - Name: C
+  fishiesCaughtCounter: 0
 --- !u!114 &3527939070217486313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31442,7 +31449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisRod: {fileID: 3527939070217486312}
-  _reelDetectionDistance: 0.05
+  _reelDetectionDistance: 0.025
   _leftControllerTracker: {fileID: 684308814}
   _rightControllerTracker: {fileID: 1805675760}
 --- !u!135 &3546357243608849170

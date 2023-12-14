@@ -37,7 +37,7 @@ namespace MagnetFishing
 
             if (_miniGameWon && !_wonEventsDispatched)
             {
-                GameSignals.FISH_CAUGHT.Dispatch();
+                //GameSignals.FISH_CAUGHT.Dispatch();
                 GameSignals.START_NEXT_MAIN_DIALOGUE.Dispatch();
             }
         }

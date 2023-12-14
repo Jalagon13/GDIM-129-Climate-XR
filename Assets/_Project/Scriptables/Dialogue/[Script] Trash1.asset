@@ -15,7 +15,14 @@ MonoBehaviour:
   ItemToDisplay: {fileID: 919132149155446097, guid: 091d0f097c12e35409a90e6cf3655910, type: 3}
   ItemName: Plastic Toothbrush
   DialogueScript:
-  - "Ooh, a toothbrush. Couldn\u2019t live without one."
+  - "That\u2019s a nice piece-a junk you caught there, bud!"
+  - Huh, you seem disappointed?
+  - "I\u2019m sorry if I forgot to tell you, but\u2026 "
+  - "this pond here doesn\u2019t have no fish in it."
+  - With all this junk here, it made it inhospitable for any life.
+  - "But you know, now that I got an extra helping hand around\u2013and some darn
+    good company\u2013I think we can clean this place up."
+  - "Anyways... you caught a toothbrush! Couldn\u2019t live without one."
   - "Yunno, you\u2019re supposed to replace those every 3 to 4 months?!"
   - "That means every year you're throwin\u2019 away like\u2026 "
   - 3 to 4 toothbrushes!

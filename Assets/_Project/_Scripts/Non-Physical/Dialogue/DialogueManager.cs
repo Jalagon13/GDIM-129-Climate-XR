@@ -12,6 +12,7 @@ namespace MagnetFishing
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private AudioClip _buttonPressSound;
         [SerializeField] private ScriptObject[] _gameScriptOrder;
+        [SerializeField] private ScriptObject[] _audioFiles;
 
         private int _gameScriptIndex = 0;
         private int _currentDialogueIndex = 0;
