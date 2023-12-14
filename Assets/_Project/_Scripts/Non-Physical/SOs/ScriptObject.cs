@@ -11,5 +11,6 @@ namespace MagnetFishing
         public string ItemName;
         [TextArea]
         public string[] DialogueScript;
+        public int itemScaleFactor;
     }
 }

@@ -15,11 +15,11 @@ namespace MagnetFishing
             EnableCanvas(false);
         }
 
-        public void Display(GameObject modelToShow, string trashName)
+        public void Display(GameObject modelToShow, string trashName, int scaleFactor = 1)
         {
             var model = Instantiate(modelToShow, transform.position, Quaternion.identity);
             model.transform.SetParent(transform, true);
-            model.transform.localScale = Vector3.one * 3;
+            model.transform.localScale = Vector3.one * 3 * scaleFactor;
             model.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
             EnableCanvas(true);

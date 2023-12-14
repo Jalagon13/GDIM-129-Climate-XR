@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
   m_Name: '[Script] Trash1'
   m_EditorClassIdentifier: 
-  ItemToDisplay: {fileID: 919132149155446097, guid: 1722380e65261d345a46f336b1d3cf81, type: 3}
+  ItemToDisplay: {fileID: 919132149155446097, guid: 091d0f097c12e35409a90e6cf3655910, type: 3}
   ItemName: Plastic Toothbrush
   DialogueScript:
   - "Ooh, a toothbrush. Couldn\u2019t live without one."
@@ -30,3 +30,4 @@ MonoBehaviour:
   - "\u2026"
   - "Woah, sorry for gettin\u2019 deep there, bud."
   - Time to cast another one out.
+  itemScaleFactor: 1
