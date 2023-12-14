@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
   m_Name: '[Script] Ending'
   m_EditorClassIdentifier: 
-  ItemToDisplay: {fileID: 919132149155446097, guid: de6c6437f8bb5b74284c895349855723, type: 3}
+  ItemToDisplay: {fileID: 919132149155446097, guid: 08e3b5d444cf3e14a878f6424babdd0e, type: 3}
   ItemName: A Fish!!!!
   DialogueScript:
   - "WOW BUD!\r"
