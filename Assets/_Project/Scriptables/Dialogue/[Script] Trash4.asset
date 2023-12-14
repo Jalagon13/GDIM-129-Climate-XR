@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
+  m_Name: '[Script] Trash4'
+  m_EditorClassIdentifier: 
+  ItemToDisplay: {fileID: 919132149155446097, guid: 184a11d01bf05a443bcfaddb0911e994, type: 3}
+  ItemName: Metal Food Tin
+  DialogueScript:
+  - That looks like a little food tin!
+  - I love tins.
+  - They come in all shapes and sizes. Can be used for all sorts of things.
+  - "My ma\u2019 would collect all of the Christmas popcorn tins and store her yarn
+    in them."
+  - "I use one to hold my lil\u2019 tuna fish sandwich every day."
+  - "Why would I put my lil\u2019 tuna fish sandwich in a plastic baggie?"
+  - "I treat my lil\u2019 tuna fish sandwiches with respect."
+  - Until I get hungry, that is.
+  - "Neat thing is, when a tin gets a bit too beat up or rusted, you could just toss
+    it in the recyclin\u2019 and turn it into somethin\u2019 new."
+  - "Only learned that you can typically recycle rusty metal once I started workin\u2019
+    at the ole\u2019 recyclin\u2019 plant back in my youthful days."
+  - 'Oh, and unlike plastic, with metal you can recycle it forever. It never breaks
+    down! '
+  - I love how you can turn a sad scrap of metal into a new beautiful Christmas popcorn
+    tin.
+  - "Let\u2019s cast another one out! I hope we get a Christmas popcorn tin next!"

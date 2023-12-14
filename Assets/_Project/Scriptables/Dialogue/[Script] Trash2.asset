@@ -13,16 +13,25 @@ MonoBehaviour:
   m_Name: '[Script] Trash2'
   m_EditorClassIdentifier: 
   ItemToDisplay: {fileID: 919132149155446097, guid: 1722380e65261d345a46f336b1d3cf81, type: 3}
-  ItemName: Plastic Loofah
+  ItemName: Bamboo Toothbrush
   DialogueScript:
-  - Oof. I hate loofahs.
-  - "These things here never last long. And the reason is cuz\u2019 they break apart
-    into tiny pieces and go down your drain."
-  - "Those little pieces are called microplastics. They get into the water and then\u2026"
-  - "Those little pieces are called microplastics. They get into the water and then\u2026"
-  - FISH EAT THEM!
-  - Sorry to get my voice up, bud. But I feel for the fish.
-  - "And it\u2019s scary cuz\u2019 they\u2019re findin\u2019 these little microplastics
-    in people\u2019s blood now."
-  - "That\u2019s why I avoid \u2018em. No matter how colorful or fluffy those little
-    things are."
+  - Golly gosh. I love bamboo.
+  - "Hmmm, but I\u2019m not sure if it beats sunflowers as my favorite plant, though."
+  - "What\u2019s cooler? Bein\u2019 the fastest growin\u2019 plant or turnin\u2019
+    direction to follow the sun?"
+  - "I\u2019ll just say they\u2019re both equally as cool. And equally my favorite."
+  - "Can yuh\u2019 guess the speed of the fastest growing species of bamboo?"
+  - "I bet a dime you can\u2019t."
+  - "IT\u2019S 3 FEET PER DAY!"
+  - "I still can\u2019t imagine that."
+  - 'And no wonder those pandas are so fat. '
+  - 'If my favorite snack grew that fast, I would be just as fat. '
+  - "\u2026"
+  - Okay, I am just as fat. Heh heh
+  - Anyway, this here bamboo toothbrush is much better than those old plastic ones.
+  - "Since it\u2019s made from a plant, you can just toss it in the compost or green
+    waste bin."
+  - "Just be careful \u2018cause if you toss it in the regular ole\u2019 trash can,
+    it\u2019ll make some nasty methane while decomposin\u2019."
+  - "And methane is a gas that\u2019s warmin\u2019 our lovely Earth."
+  - Our lovely, beautiful Earth.

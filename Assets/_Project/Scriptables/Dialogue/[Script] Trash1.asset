@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54caa4857b8b5e4429dca9709911f604, type: 3}
   m_Name: '[Script] Trash1'
   m_EditorClassIdentifier: 
-  ItemToDisplay: {fileID: 919132149155446097, guid: f11bdf7edaf683a47be2dbcc5140a057, type: 3}
-  ItemName: Rubber Boots
+  ItemToDisplay: {fileID: 919132149155446097, guid: 1722380e65261d345a46f336b1d3cf81, type: 3}
+  ItemName: Plastic Toothbrush
   DialogueScript:
-  - You caught it! Nice one, bud!
-  - "That\u2019s a nice piece-a junk you caught there, bud!"
-  - "That\u2019s a mighty fine rubber boot you got there! I don\u2019t know who would
-    wanna throw that away!"
-  - Huh, you seem disappointed?
-  - "Oh, uhhh\u2026"
-  - "I\u2019m sorry if I forgot to tell you, but\u2026 "
-  - "This pond here doesn\u2019t have no fish in it."
-  - Not for a long while, at least.
-  - With all this junk here, it made it inhospitable for any life.
-  - "But you know, now that I got an extra helping hand around\u2013and some darn
-    good company\u2013I think we can clean this place up, one rubber boot at a time!"
-  - Go on then! Cast your rod out again and let's see what we can find!
+  - "Ooh, a toothbrush. Couldn\u2019t live without one."
+  - "Yunno, you\u2019re supposed to replace those every 3 to 4 months?!"
+  - "That means every year you're throwin\u2019 away like\u2026 "
+  - 3 to 4 toothbrushes!
+  - "I feel real bad throwin\u2019 mine away. I always give them a name."
+  - My little pal right now is named The Earl of Pearl.
+  - "I also used to feel bad 'cause hearin\u2019 the thud of the plastic hittin\u2019
+    the little metal trash can always made me think of how it\u2019s gonna live the
+    rest of its poor little life in a landfill. "
+  - "And that life is thousands of years\u2026"
+  - Wish we could live that long.
+  - Or maybe not.
+  - "\u2026"
+  - "Woah, sorry for gettin\u2019 deep there, bud."
+  - Time to cast another one out.
