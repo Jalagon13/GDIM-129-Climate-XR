@@ -36,8 +36,8 @@ ModelImporter:
       name: Armature.002|Armature.002Action (1)
       takeName: Armature.002|Armature.002Action
       internalID: -3843029192239311791
-      firstFrame: 0
-      lastFrame: 140
+      firstFrame: 2
+      lastFrame: 136
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
