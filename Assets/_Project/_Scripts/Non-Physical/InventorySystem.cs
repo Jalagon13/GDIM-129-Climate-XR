@@ -87,9 +87,11 @@ namespace MagnetFishing
         private void InitializeItemDescriptions()
         {
             // Initialize with predefined item descriptions
-            itemDescriptions.Add("Rubber Boot", "Reuse and upcycle. If only you had a pair!");
-            itemDescriptions.Add("Plastic Loofah", "Microplastics, yuck! If only there were a more natural alternative...");
-            itemDescriptions.Add("Fish", "A REAL LIVE FISH! WOW!");
+            itemDescriptions.Add("Plastic Toothbrush", "This invention was critical for improving human’s oral hygiene. However, it has also led to an incredible amount of plastic waste to landfills. Every part of the toothbrush, including the thin bristles, are made of plastics.");
+            itemDescriptions.Add("Bamboo Toothbrush", "There is a wide variety of bamboo and compostable toothbrushes. It is important to know what each component is made of, as sometimes the bristles may be made of plastic. Proper disposal, such as industrial composting, may be required to allow the toothbrush to biodegrade. But if done correctly, your old toothbrush will be turned into fuel for new plants to grow!");
+            itemDescriptions.Add("Styrofoam To-Go Box", "Most areas do not offer recycling for extruded polystyrene foam, the generic name for Styrofoam, because of its highly difficult and expensive process. Furthermore, when Styrofoam is heated, it can leach toxic chemicals into food and waterways.");
+            itemDescriptions.Add("Metal Food Tin", "Reusable food containers made of metal or glass are infinitely recyclable. But because these are reusable, you are reducing waste even more effectively. When purchasing a container, try to look for ones that are entirely made of glass or metal, and avoid ones that include plastic components.");
+            itemDescriptions.Add("Fish", "A REAL LIVE FISH! WOW! Over time, if we help clean up nature, it will find ways to heal itself. This little guy might have microplastics in him from the long-term pollution of this lake, but with your help the lake will get better and better with time. You've made your grandpa proud!");
         }
 
         private void InitializeItemSlots()
@@ -104,8 +106,8 @@ namespace MagnetFishing
         void UpdateInventoryDisplay()
         {
             var caughtFishes = fishingRod.GetCaughtFishes(); // Using caught fish list from FishingRod
-            var sortedItems = caughtFishes.ToList();
-            sortedItems.Sort((pair1, pair2) => pair1.Key.CompareTo(pair2.Key));
+            var sequentiallyCaughtItems = caughtFishes.ToList();
+            //sortedItems.Sort((pair1, pair2) => pair1.Key.CompareTo(pair2.Key));
 
             foreach (var slot in itemSlots)
             {
@@ -117,9 +119,9 @@ namespace MagnetFishing
                 var slot = itemSlots[i];
                 var textComponent = slot.GetComponentInChildren<TMP_Text>();
 
-                if (i < sortedItems.Count)
+                if (i < sequentiallyCaughtItems.Count)
                 {
-                    var item = sortedItems[i];
+                    var item = sequentiallyCaughtItems[i];
                     textComponent.text = item.Key + " x" + item.Value; // Display item name and count
                     SetSlotTransparency(slot, 1);
 
